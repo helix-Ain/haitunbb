@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html ng-app='app'>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+		<link rel='stylesheet' href='CSS/ionic.min.css' />
+		<script src="JS/ionic.bundle.min.js"></script>
+		<script src='JS/chart.min.js'></script>
+		<title></title>
+		<style>
+			span.th,
+			span.td {
+				width: 25%;
+				display: inline-block;
+				text-align: center;
+				font-size: 14px;
+				color: #828282;
+			}
+			.item{
+				padding:12px;
+			}
+		</style>
+	</head>
+
+	<body ng-controller='app'>
+		<div class='bar bar-header bar-calm'>
+			<button class='button button-icon icon ion-ios-arrow-left'>返回</button>
+			<h1 class='title'>幼儿园考勤</h1>
+		</div>
+		<ion-content class='has-header' style='background-color: #E2EEF6;'>
+			<ion-list>
+				<label class="item item-input item-select" style='height:45px;'>
+				    <select style='right:23%;' ng-change='change(time)' ng-model='time'>
+				      <option>2016年4月5日</option>
+				      <option>2016年4月4日</option>
+				      <option>2016年4月3日</option>
+				    </select>
+				</label>
+				<ion-item style='text-align: center;padding-bottom: 37px;'>
+					<label style='position: absolute;top:29%;left:37%;color:#7D899B;font-size: 55px;'>{{percent}}</label>
+					<canvas id='myChart' wdith="200" height='200'></canvas>
+					<span style='position:absolute;bottom:1%;left:37%;color:#9F9F9F;font-size:15px;font-weight: 500;'>
+						幼儿出勤率<br />
+	                    <span>{{time}}</span>
+					</span>
+				</ion-item>
+				<ion-item style='height:12px;padding: 0;background-color: #E2EEF6;'></ion-item>
+				<ion-item><span class='th'>班级</span><span class='th'>出勤人数</span><span class='th'>缺勤人数</span><span class='th'>出勤比例</span></ion-item>
+				<ion-item><span class='td'>大三班</span><span class='td'>1</span><span class='td'>3</span><span class='td'>20%</span></ion-item>
+				<ion-item><span class='td'>大二班</span><span class='td'>2</span><span class='td'>5</span><span class='td'>20%</span></ion-item>
+				<ion-item><span class='td'>中二班</span><span class='td'>0</span><span class='td'>8</span><span class='td'>20%</span></ion-item>
+				<ion-item><span class='td'>小三班</span><span class='td'>3</span><span class='td'>4</span><span class='td'>20%</span></ion-item>
+				<ion-item style='height:12px;padding: 0;background-color: #E2EEF6;'></ion-item>
+			</ion-list>
+		</ion-content>
+		<script>
+			angular.module('app', ['ionic']).controller('app', function($scope, $timeout, $ionicLoading) {
+				loadChart();
+				loading();
+				$scope.time = '2016年4月5日';
+				$scope.change = function(time) {
+					loading();
+				}
+
+				function loadChart() {
+					var ctx = document.getElementById('myChart').getContext('2d');
+					var data = [{
+						value: 90,
+						color: '#4FB0EF'
+					}, {
+						value: 10,
+						color: '#DEF0F9'
+					}];
+					var options = {
+						segmentShowStroke: true,
+						segmentStrokeColor: "#fff",
+						segmentStrokeWidth: 2,
+						percentageInnerCutout: 80,	
+						animation: true,
+						animationSteps: 100,
+						animationEasing: "easeOutBounce",
+						animateRotate: true,
+						animateScale: false,
+						onAnimationComplete: null
+					};
+					new Chart(ctx).Doughnut(data,options);
+					$scope.percent = '90%';
+				}
+
+				function loading() {
+					$ionicLoading.show({
+						content: 'Loading',
+						animation: 'fade-in',
+						showBackdrop: true,
+						maxWidth: 200,
+						showDelay: 0
+					});
+					$timeout(function() {
+						$ionicLoading.hide();
+					}, 700);
+				}
+			});
+		</script>
+	</body>
+
+</html>

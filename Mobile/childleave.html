@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html ng-app='app'>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+		<link rel='stylesheet' href='CSS/ionic.min.css' />
+		<script src="JS/ionic.bundle.min.js"></script>
+		<title></title>
+		<style>
+			span.th,
+			span.td {
+				width: 33%;
+				display: inline-block;
+				text-align: center;
+				font-size: medium;
+				color: #828282;
+			}
+			.item{
+				padding:12px;
+			}
+		</style>
+	</head>
+
+	<body ng-controller='app'>
+		<div class='bar bar-header bar-calm'>
+			<button class='button button-icon icon ion-ios-arrow-left'>返回</button>
+			<h1 class='title'>幼儿请假</h1>
+		</div>
+		<ion-content class='has-header'>
+			<ion-list>
+				<label class="item item-input item-select" style='height:45px;'>
+				    <select style='right:23%;' ng-change='change(time)' ng-model='time'>
+				      <option>2016年4月5日</option>
+				      <option>2016年4月4日</option>
+				      <option>2016年4月3日</option>
+				    </select>
+				</label>
+				<ion-item><span class='th'>班级</span><span class='th'>病假人数</span><span class='th'>事假人数</span></ion-item>
+				<ion-item><span class='td'>大三班</span><span class='td'>1</span><span class='td'>3</span></ion-item>
+				<ion-item><span class='td'>大二班</span><span class='td'>2</span><span class='td'>5</span></ion-item>
+				<ion-item><span class='td'>中二班</span><span class='td'>0</span><span class='td'>8</span></ion-item>
+				<ion-item><span class='td'>大三班</span><span class='td'>3</span><span class='td'>4</span></ion-item>
+				<ion-item><span class='td'>大三班</span><span class='td'>0</span><span class='td'>0</span></ion-item>
+				<ion-item><span class='td'>小三班</span><span class='td'>5</span><span class='td'>1</span></ion-item>
+				<ion-item><span class='td'>中三班</span><span class='td'>0</span><span class='td'>3</span></ion-item>
+				<ion-item><span class='td'>小一班</span><span class='td'>0</span><span class='td'>0</span></ion-item>
+				<ion-item><span class='td'>中一班</span><span class='td'>0</span><span class='td'>0</span></ion-item>
+			</ion-list>
+		</ion-content>
+		<script>
+			angular.module('app', ['ionic']).controller('app', function($scope, $timeout, $ionicLoading) {
+				loading();
+				$scope.time = '2016年4月5日';
+				$scope.change = function(time) {
+					loading();
+				}
+
+				function loading() {
+					$ionicLoading.show({
+						content: 'Loading',
+						animation: 'fade-in',
+						showBackdrop: true,
+						maxWidth: 200,
+						showDelay: 0
+					});
+					$timeout(function() {
+						$ionicLoading.hide();
+					}, 700);
+				}
+			});
+		</script>
+	</body>
+
+</html>
