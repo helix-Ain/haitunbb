@@ -13,7 +13,7 @@
 				width: 33%;
 				display: inline-block;
 				text-align: center;
-				font-size: medium;
+				font-size: 14px;
 				color: #828282;
 			}
 			.item{
@@ -23,14 +23,14 @@
 	</head>
 
 	<body ng-controller='app'>
-		<div class='bar bar-header bar-calm'>
+		<ion-header-bar class='bar-calm'>
 			<button class='button button-icon icon ion-ios-arrow-left'>返回</button>
 			<h1 class='title'>幼儿请假</h1>
-		</div>
+		</ion-header-bar>
 		<ion-content class='has-header'>
 			<ion-list>
 				<label class="item item-input item-select" style='height:45px;'>
-				    <select style='right:23%;' ng-change='change(time)' ng-model='time'>
+				    <select style='right:25%;' ng-change='change(time)' ng-model='time'>
 				      <option>2016年4月5日</option>
 				      <option>2016年4月4日</option>
 				      <option>2016年4月3日</option>
@@ -66,7 +66,7 @@
 					});
 					$timeout(function() {
 						$ionicLoading.hide();
-					}, 700);
+					}, 1000);
 				}
 			});
 		</script>
