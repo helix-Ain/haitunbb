@@ -54,34 +54,38 @@
 			</a>
 		</ion-tabs>
 		<ion-content class='has-tabs-top' style='background-color: #E2EEF6;'>
-				<ion-list style='padding-bottom: 10px;'>
-					<label class="item item-input item-select" style='height:45px;'>
+			<ion-list style='padding-bottom: 10px;'>
+				<label class="item item-input item-select" style='height:45px;'>
 							    <select style='right:25%;' ng-change='change(time)' ng-model='time'>
 							      <option>2016年4月5日</option>
 							      <option>2016年4月4日</option>
 							      <option>2016年4月3日</option>
 							    </select>
 							</label>
-					<ion-item>
-						<span>共<span class='num'>20</span>人</span>
-						<span>缺勤<span class='num'>2</span></span>
-						<span>请假<span class='num'>3</span></span>
-						<span>迟到<span class='num'>1</span></span>
-						<span>未审批<span class='num'>3</span></span>
-					</ion-item>
-					<ion-item style='height:12px;padding: 0;background-color: #E2EEF6;'></ion-item>
-					<ion-item><span class='th'>姓名</span><span class='th'>出勤天数</span><span class='th'>请假天数</span></ion-item>
-					<ion-item><span class='td'>李富荣</span><span class='td'>20</span><span class='td'>2</span></ion-item>
-					<ion-item><span class='td'>张鹏</span><span class='td'>22</span><span class='td'>1</span></ion-item>
-					<ion-item><span class='td'>许光杰</span><span class='td'>19</span><span class='td'>4</span></ion-item>
-					<ion-item><span class='td'>郭天佑</span><span class='td'>17</span><span class='td'>2</span></ion-item>
-				</ion-list>
+				<ion-item>
+					<span>共<span class='num'>20</span>人</span>
+					<span>缺勤<span class='num'>2</span></span>
+					<span>请假<span class='num'>3</span></span>
+					<span>迟到<span class='num'>1</span></span>
+					<span>未审批<span class='num'>3</span></span>
+				</ion-item>
+				<ion-item style='height:12px;padding: 0;background-color: #E2EEF6;'></ion-item>
+				<ion-item><span class='th'>姓名</span><span class='th'>出勤天数</span><span class='th'>请假天数</span></ion-item>
+				<ion-item><span class='td'>李富荣</span><span class='td'>20</span><span class='td'>2</span></ion-item>
+				<ion-item><span class='td'>张鹏</span><span class='td'>22</span><span class='td'>1</span></ion-item>
+				<ion-item><span class='td'>许光杰</span><span class='td'>19</span><span class='td'>4</span></ion-item>
+				<ion-item><span class='td'>郭天佑</span><span class='td'>17</span><span class='td'>2</span></ion-item>
+			</ion-list>
 		</ion-content>
 		<script>
 			angular.module('app', ['ionic']).controller('app', function($scope, $timeout, $ionicLoading) {
 				loading();
 				$scope.tab = 2;
 				$scope.time = '2016年4月5日';
+				$scope.change = function(time) {
+					loading();
+				}
+
 				function loading() {
 					$ionicLoading.show({
 						content: 'Loading',

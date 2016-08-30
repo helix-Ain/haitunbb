@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html ng-app='app'>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+		<link rel='stylesheet' href='CSS/ionic.min.css' />
+		<script src="JS/ionic.bundle.min.js"></script>
+		<script src='JS/chart.min.js'></script>
+		<title></title>
+		<style>
+			span.percent {
+				font-size: 20px;
+				font-weight: 500;
+			}
+			
+			span.num {
+				color: #F98D9D;
+			}
+			
+			div.row {
+				padding: 0;
+			}
+			
+			div.col {
+				padding: 3px;
+			}
+		</style>
+	</head>
+
+	<body ng-controller='app'>
+		<ion-header-bar class='bar-calm'>
+			<h1 class='title'>报表中心</h1>
+		</ion-header-bar>
+		<ion-content class='has-header' style='background-color: #E2EEF6;'>
+			<ion-list>
+				<ion-item style='padding-top:0;padding-bottom: 0;'>
+					<div class='row'>
+						<div class='col' style='text-align: center;'>
+							<div class='row'>
+								<div class='col' style='text-align: center;color:#99A0A9;'>今日幼儿考勤</div>
+							</div>
+							<div class='row' style='border-right: 1px solid #E8E8E8;'>
+								<div class='col' style='text-align: center;'>
+									<label style='position: absolute;top:33%;left:19%;color:#7D899B;font-size: 15px;'>出勤比例<br/><span class='percent'>{{percent1}}</span>%</label>
+									<canvas id='myChart1' width='125'></canvas>
+								</div>
+							</div>
+							<div class='row'>
+								<div class='col' style='text-align: center;'>
+									<span style='font-size:13px;'><span class='num'>20</span>人出勤&nbsp;&nbsp;<span class='num'>2</span>人未出勤</span><br />
+									<button style='background-color: transparent;border:1px solid #7CCCF7;border-radius: 3px; color:#7CCCF7;font-size:small;margin:5px 0'>查看详情</button>
+								</div>
+							</div>
+						</div>
+						<div class='col' style='text-align: center;'>
+							<div class='row'>
+								<div class='col' style='text-align: center;color:#99A0A9;'>今日教师考勤</div>
+							</div>
+							<div class='row'>
+								<div class='col' style='text-align: center;'>
+									<label style='position: absolute;top:33%;right:18%;color:#7D899B;font-size: 15px;'>出勤比例<br/><span class='percent'>{{percent2}}</span>%</label>
+									<canvas id='myChart2' width='125'></canvas>
+								</div>
+							</div>
+							<div class='row'>
+								<div class='col' style='text-align: center;'>
+									<span style='font-size:13px;'><span class='num'>20</span>人出勤&nbsp;&nbsp;<span class='num'>1</span>人未出勤</span><br />
+									<button style='background-color: transparent;border:1px solid #7CCCF7;border-radius: 3px; color:#7CCCF7;font-size:small;margin:5px 0'>查看详情</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</ion-item>
+				<ion-item style='height:12px;padding: 0;background-color: #E2EEF6;border:none;'></ion-item>
+				<ion-item style='padding:0;background-color:#E2EEF6;border:none;'>
+					<div class='row' style='height:100px;padding:0;background-color:#E2EEF6;'>
+						<div class='col' style='margin-right:5px;background-image:url(Images/幼儿晨检报表@2x.png);background-size:cover;cursor:pointer;'></div>
+						<div class='col' style='margin-right:5px;background-image:url(Images/师资统计@2x.png);background-size:cover;cursor:pointer;'></div>
+						<div class='col' style='background-image:url(Images/幼儿背景分析@2x.png);background-size:cover;cursor:pointer;'></div>
+					</div>
+				</ion-item>
+				<ion-item style='height:5px;padding: 0;background-color: #E2EEF6;'></ion-item>
+				<ion-item style='padding:0;background-color:#E2EEF6;border:none;'>
+					<div class='row' style='height:100px;padding:0;background-color:#E2EEF6;'>
+						<div class='col' style='margin-right:5px;background-image:url(Images/幼儿请假@2x.png);background-size:cover;cursor:pointer;'></div>
+						<div class='col' style='margin-right:5px;background-image:url(Images/入离园分析@2x.png);background-size:cover;cursor:pointer;'></div>
+						<div class='col'></div>
+					</div>
+				</ion-item>
+			</ion-list>
+		</ion-content>
+		<script>
+			angular.module('app', ['ionic']).controller('app', function($scope, $timeout, $ionicLoading) {
+				loading();
+				loadChart();
+
+				function loadChart() {
+					var ctx1 = document.getElementById('myChart1').getContext('2d');
+					var ctx2 = document.getElementById('myChart2').getContext('2d');
+					var data1 = [{
+						value: 90,
+						label: '幼儿出勤率',
+						color: '#65C7D2'
+					}, {
+						value: 10,
+						label: '幼儿缺勤率',
+						color: '#DEF0F9'
+					}];
+					var data2 = [{
+						value: 95,
+						label: '教师出勤率',
+						color: '#F98D9D'
+					}, {
+						value: 5,
+						label: '教师缺勤率',
+						color: '#DEF0F9'
+					}];
+					var options = {
+						segmentShowStroke: true,
+						segmentStrokeColor: "#fff",
+						segmentStrokeWidth: 2,
+						percentageInnerCutout: 85,
+						animation: true,
+						animationSteps: 100,
+						animationEasing: "easeOutBounce",
+						animateRotate: true,
+						animateScale: false,
+						onAnimationComplete: null
+					};
+					new Chart(ctx1).Doughnut(data1, options);
+					new Chart(ctx2).Doughnut(data2, options);
+					$scope.percent1 = '90';
+					$scope.percent2 = '95';
+				}
+
+				function loading() {
+					$ionicLoading.show({
+						content: 'Loading',
+						animation: 'fade-in',
+						showBackdrop: true,
+						maxWidth: 200,
+						showDelay: 0
+					});
+					$timeout(function() {
+						$ionicLoading.hide();
+					}, 1000);
+				}
+			});
+		</script>
+	</body>
+
+</html>
