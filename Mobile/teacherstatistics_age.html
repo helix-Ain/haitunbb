@@ -43,9 +43,9 @@
 	</head>
 
 	<body ng-controller='app'>
-		<ion-header-bar class='bar-calm'>
+		<ion-header-bar class='bar-calm' style='background-color: #009BE8;background-image:url(Images/d2_1.png);background-size:cover;'>
 			<button class='button button-icon icon ion-ios-arrow-left' onclick="location='reportcenter.html'">返回</button>
-			<h1 class='title' style='text-align: center;'>师资统计</h1>
+			<h1 class='title'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;师资统计</h1>
 		</ion-header-bar>
 		<ion-tabs class="tabs-striped tabs-top tabs-background-light tabs-color-calm">
 			<a class="tab-item" ng-class='{active:tab==1}' href='teacherstatistics_progress.html'>
@@ -64,13 +64,14 @@
 					<canvas id='myChart' wdith='200' height='200'></canvas>
 					<span style='position:absolute;bottom:1%;left:37%;color:#9F9F9F;font-size:15px;font-weight: 500;'>年龄统计分布图</span>
 				</ion-item>
-				<ion-item style='height:12px;padding: 0;background-color: #E2EEF6;'></ion-item>
+				<ion-item style='height:12px;padding: 0;background-color: #E2EEF6;border:none;'></ion-item>
 				<ion-item><span class='th'>年龄</span><span class='th'>人数</span></ion-item>
 				<ion-item><span class='td tdf'><div style='background-color:#A0E04E;' class='radius'></div>未设置出生日期</span><span class='td'>17</span></ion-item>
 				<ion-item><span class='td tdf'><div style='background-color:#FBA711;' class='radius'></div>26-30岁</span><span class='td'>5</span></ion-item>
 				<ion-item><span class='td tdf'><div style='background-color:#5ACA4A;' class='radius'></div>20岁以下</span><span class='td'>8</span></ion-item>
 				<ion-item><span class='td tdf'><div style='background-color:#59D5F6;' class='radius'></div>21-25岁</span><span class='td'>2</span></ion-item>
 				<ion-item><span class='td tdf'><div style='background-color:#FA7EB8;' class='radius'></div>36-40岁</span><span class='td'>1</span></ion-item>
+				<ion-item style='height:12px;padding: 0;background-color: #E2EEF6;border:none;'></ion-item>
 			</ion-list>
 		</ion-content>
 		<script>

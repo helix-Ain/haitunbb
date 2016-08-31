@@ -43,9 +43,9 @@
 	</head>
 
 	<body ng-controller='app'>
-		<ion-header-bar class='bar-calm'>
+		<ion-header-bar class='bar-calm' style='background-color: #009BE8;background-image:url(Images/d2_1.png);background-size:cover;'>
 			<button class='button button-icon icon ion-ios-arrow-left' onclick="location='reportcenter.html'">返回</button>
-			<h1 class='title' style='text-align: center;'>入离园分析</h1>
+			<h1 class='title'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;入离园分析</h1>
 		</ion-header-bar>
 		<ion-tabs class="tabs-striped tabs-top tabs-background-light tabs-color-calm">
 			<a class="tab-item" ng-class='{active:tab==1}' href='flowanalysis_enter.html'>
@@ -69,7 +69,7 @@
 					<canvas id='myChart' wdith='200' height='200'></canvas>
 					<span style='position:absolute;bottom:1%;left:37%;color:#9F9F9F;font-size:15px;font-weight: 500;'>入园分析图</span>
 				</ion-item>
-				<ion-item style='height:12px;padding: 0;background-color: #E2EEF6;'></ion-item>
+				<ion-item style='height:12px;padding: 0;background-color: #E2EEF6;border:none;'></ion-item>
 				<ion-item><span class='th'>理由</span><span class='th'>人数</span></ion-item>
 				<ion-item><span class='td tdf'><div style='background-color:#A1D867;' class='radius'></div>未填写</span><span class='td'>17</span></ion-item>
 				<ion-item><span class='td tdf'><div style='background-color:#F9A415;' class='radius'></div>就近入园</span><span class='td'>5</span></ion-item>
@@ -78,7 +78,7 @@
 				<ion-item><span class='td tdf'><div style='background-color:#AB78FB;' class='radius'></div>管理模式专业</span><span class='td'>8</span></ion-item>
 				<ion-item><span class='td tdf'><div style='background-color:#4F89EB;' class='radius'></div>教学质量</span><span class='td'>8</span></ion-item>
 				<ion-item><span class='td tdf'><div style='background-color:#F9E356;' class='radius'></div>其他原因</span><span class='td'>17</span></ion-item>
-				<ion-item style='height:12px;padding: 0;background-color: #E2EEF6;'></ion-item>
+				<ion-item style='height:12px;padding: 0;background-color: #E2EEF6;border:none;'></ion-item>
 			</ion-list>
 		</ion-content>
 		<script>

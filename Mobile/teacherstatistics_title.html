@@ -43,9 +43,9 @@
 	</head>
 
 	<body ng-controller='app'>
-		<ion-header-bar class='bar-calm'>
+		<ion-header-bar class='bar-calm' style='background-color: #009BE8;background-image:url(Images/d2_1.png);background-size:cover;'>
 			<button class='button button-icon icon ion-ios-arrow-left' onclick="location='reportcenter.html'">返回</button>
-			<h1 class='title' style='text-align: center;'>师资统计</h1>
+			<h1 class='title'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;师资统计</h1>
 		</ion-header-bar>
 		<ion-tabs class="tabs-striped tabs-top tabs-background-light tabs-color-calm">
 			<a class="tab-item" ng-class='{active:tab==1}' href='teacherstatistics_progress.html'>
@@ -64,7 +64,7 @@
 					<canvas id='myChart' wdith='200' height='200'></canvas>
 					<span style='position:absolute;bottom:1%;left:37%;color:#9F9F9F;font-size:15px;font-weight: 500;'>职称统计分布图</span>
 				</ion-item>
-				<ion-item style='height:12px;padding: 0;background-color: #E2EEF6;'></ion-item>
+				<ion-item style='height:12px;padding: 0;background-color: #E2EEF6;border:none;'></ion-item>
 				<ion-item><span class='th'>职称</span><span class='th'>人数</span></ion-item>
 				<ion-item><span class='td tdf'><div style='background-color:#A1D867;' class='radius'></div>未定职称</span><span class='td'>4</span></ion-item>
 				<ion-item><span class='td tdf'><div style='background-color:#F9A415;' class='radius'></div>幼中高</span><span class='td'>1</span></ion-item>
@@ -75,7 +75,7 @@
 				<ion-item><span class='td tdf'><div style='background-color:#A87AFC;' class='radius'></div>小学三级</span><span class='td'>1</span></ion-item>
 				<ion-item><span class='td tdf'><div style='background-color:#166F9B;' class='radius'></div>幼教二级</span><span class='td'>2</span></ion-item>
 				<ion-item><span class='td tdf'><div style='background-color:#E8116D;' class='radius'></div>中学高级</span><span class='td'>2</span></ion-item>
-				<ion-item style='height:12px;padding: 0;background-color: #E2EEF6;'></ion-item>
+				<ion-item style='height:12px;padding: 0;background-color: #E2EEF6;border:none;'></ion-item>
 			</ion-list>
 		</ion-content>
 		<script>
@@ -83,7 +83,7 @@
 				loading();
 				loadChart();
 				$scope.tab = 2;
-				
+
 				function loading() {
 					$ionicLoading.show({
 						content: 'Loading',
@@ -139,12 +139,12 @@
 						value: 7,
 						label: '小学三级',
 						color: '#A87AFC'
-					},{
+					}, {
 						value: 10,
 						label: '幼教二级',
 						color: '#166F9B'
-					},{
-						value :13,
+					}, {
+						value: 13,
 						label: '中学高级',
 						color: '#E8116D'
 					}];

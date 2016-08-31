@@ -43,9 +43,9 @@
 	</head>
 
 	<body ng-controller='app'>
-		<ion-header-bar class='bar-calm'>
+		<ion-header-bar class='bar-calm' style='background-color: #009BE8;background-image:url(Images/d2_1.png);background-size:cover;'>
 			<button class='button button-icon icon ion-ios-arrow-left' onclick="location='reportcenter.html'">返回</button>
-			<h1 class='title' style='text-align: center;'>幼儿背景分析</h1>
+			<h1 class='title'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;幼儿背景分析</h1>
 		</ion-header-bar>
 		<ion-tabs class="tabs-striped tabs-top tabs-background-light tabs-color-calm">
 			<a class="tab-item" ng-class='{active:tab==1}' href='backgroundanalysis_parentedu.html'>
@@ -64,7 +64,7 @@
 					<canvas id='myChart' wdith='200' height='200'></canvas>
 					<span style='position:absolute;bottom:1%;left:37%;color:#9F9F9F;font-size:15px;font-weight: 500;'>家长行业分布图</span>
 				</ion-item>
-				<ion-item style='height:12px;padding: 0;background-color: #E2EEF6;'></ion-item>
+			<ion-item style='height:12px;padding: 0;background-color: #E2EEF6;border:none;'></ion-item>
 				<ion-item><span class='th'>行业</span><span class='th'>人数</span></ion-item>
 				<ion-item><span class='td tdf'><div style='background-color:#A9D86E;' class='radius'></div>未填写</span><span class='td'>4</span></ion-item>
 				<ion-item><span class='td tdf'><div style='background-color:#F9A415;' class='radius'></div>金融行业</span><span class='td'>1</span></ion-item>
@@ -74,7 +74,7 @@
 				<ion-item><span class='td tdf'><div style='background-color:#AB79FB;' class='radius'></div>工人</span><span class='td'>6</span></ion-item>
 				<ion-item><span class='td tdf'><div style='background-color:#398EFE;' class='radius'></div>高薪技术人员</span><span class='td'>1</span></ion-item>
 				<ion-item><span class='td tdf'><div style='background-color:#F74849;' class='radius'></div>务农</span><span class='td'>1</span></ion-item>
-				<ion-item style='height:12px;padding: 0;background-color: #E2EEF6;'></ion-item>
+				<ion-item style='height:12px;padding: 0;background-color: #E2EEF6;border:none;'></ion-item>
 			</ion-list>
 		</ion-content>
 		<script>

@@ -23,11 +23,11 @@
 	</head>
 
 	<body ng-controller='app'>
-		<ion-header-bar class='bar-calm'>
+		<ion-header-bar class='bar-calm' style='background-color: #009BE8;background-image:url(Images/d2_1.png);background-size:cover;'>
 			<button class='button button-icon icon ion-ios-arrow-left' onclick="location='reportcenter.html'">返回</button>
-			<h1 class='title' style='text-align: center;'>幼儿请假</h1>
+			<h1 class='title'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;幼儿请假</h1>
 		</ion-header-bar>
-		<ion-content class='has-header'>
+		<ion-content class='has-header' style='background-color: #E2EEF6;'>
 			<ion-list>
 				<label class="item item-input item-select" style='height:45px;'>
 				    <select style='right:25%;' ng-change='change(time)' ng-model='time'>
@@ -46,6 +46,7 @@
 				<ion-item><span class='td'>中三班</span><span class='td'>0</span><span class='td'>3</span></ion-item>
 				<ion-item><span class='td'>小一班</span><span class='td'>0</span><span class='td'>0</span></ion-item>
 				<ion-item><span class='td'>中一班</span><span class='td'>0</span><span class='td'>0</span></ion-item>
+				<ion-item style='height:12px;padding: 0;background-color: #E2EEF6;border:none;'></ion-item>
 			</ion-list>
 		</ion-content>
 		<script>
