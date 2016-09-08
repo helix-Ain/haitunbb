@@ -4,14 +4,14 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-		<link rel='stylesheet' href='CSS/ionic.min.css' />
-		<script src="JS/ionic.bundle.min.js"></script>
-		<script src='JS/chart.min.js'></script>
+		<link rel='stylesheet' href='../CSS/ionic.min.css' />
+		<script src="../JS/ionic.bundle.min.js"></script>
+		<script src='../JS/chart.min.js'></script>
 		<title></title>
 		<style>
 			span.th,
 			span.td {
-				width: 25%;
+				width: 33%;
 				display: inline-block;
 				text-align: center;
 				font-size: 14px;
@@ -25,9 +25,9 @@
 	</head>
 
 	<body ng-controller='app'>
-		<ion-header-bar class='bar-calm' style='background-color: #009BE8;background-image:url(Images/d2_1.png);background-size:cover;'>
-		    <button class='button button-icon icon ion-ios-arrow-left' onclick="location='reportcenter.html'">返回</button>
-			<h1 class='title'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;幼儿园考勤</h1>
+		<ion-header-bar class='bar-calm' style='background-color: #009BE8;background-image:url(../Images/d2_1.png);background-size:cover;'>
+			<button class='button button-icon icon ion-ios-arrow-left' onclick="location='reportcenter.html'">返回</button>
+			<h1 class='title'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;幼儿晨检报表</h1>
 		</ion-header-bar>
 		<ion-content class='has-header' style='background-color: #E2EEF6;'>
 			<ion-list style='padding-bottom: 10px;'>
@@ -42,22 +42,22 @@
 					<label style='position: absolute;top:29%;left:37%;color:#7D899B;font-size: 55px;'>{{percent}}</label>
 					<canvas id='myChart' wdith="200" height='200'></canvas>
 					<span style='position:absolute;bottom:1%;left:37%;color:#9F9F9F;font-size:15px;font-weight: 500;'>
-						幼儿出勤率<br />
+						异常人数比例<br />
 	                    <span>{{time}}</span>
 					</span>
 				</ion-item>
 				<ion-item style='height:12px;padding: 0;background-color: #E2EEF6;border:none;'></ion-item>
-				<ion-item><span class='th'>班级</span><span class='th'>出勤人数</span><span class='th'>缺勤人数</span><span class='th'>出勤比例</span></ion-item>
-				<ion-item><span class='td'>大三班</span><span class='td'>1</span><span class='td'>3</span><span class='td'>20%</span></ion-item>
-				<ion-item><span class='td'>大二班</span><span class='td'>2</span><span class='td'>5</span><span class='td'>20%</span></ion-item>
-				<ion-item><span class='td'>中二班</span><span class='td'>0</span><span class='td'>8</span><span class='td'>20%</span></ion-item>
-				<ion-item><span class='td'>小三班</span><span class='td'>3</span><span class='td'>4</span><span class='td'>20%</span></ion-item>
+				<ion-item><span class='th'>班级</span><span class='th'>异常症状人数</span><span class='th'>体温偏高人数</span></ion-item>
+				<ion-item><span class='td'>大三班</span><span class='td'>0</span><span class='td'>3</span></ion-item>
+				<ion-item><span class='td'>大二班</span><span class='td'>2</span><span class='td'>5</span></ion-item>
+				<ion-item><span class='td'>中二班</span><span class='td'>0</span><span class='td'>8</span></ion-item>
+				<ion-item><span class='td'>小三班</span><span class='td'>0</span><span class='td'>4</span></ion-item>
 				<ion-item style='height:12px;padding: 0;background-color: #E2EEF6;border:none;'></ion-item>
 			</ion-list>
 		</ion-content>
 		<script>
-			angular.module('app', ['ionic']).controller('app', function($scope, $timeout, $ionicLoading,$window) {
-				loading()
+			angular.module('app', ['ionic']).controller('app', function($scope, $timeout, $ionicLoading, $window) {
+				loading();
 				$scope.time = '2016年4月5日';
 				$scope.change = function(time) {
 					loading();
@@ -65,16 +65,15 @@
 				$window.onload = function() {
 					loadChart();
 				}
-
 				function loadChart() {
 					var ctx = document.getElementById('myChart').getContext('2d');
 					var data = [{
-						value: 90,
-						label: '出勤率',
+						value: 45,
+						label: '异常人数比例',
 						color: '#4FB0EF'
 					}, {
-						value: 10,
-						label :'缺勤率',
+						value: 55,
+						label: '正常人数比例',
 						color: '#DEF0F9'
 					}];
 					var options = {
@@ -90,7 +89,7 @@
 						onAnimationComplete: null
 					};
 					new Chart(ctx).Doughnut(data, options);
-					$scope.percent = '90%';
+					$scope.percent = '45%';
 				}
 
 				function loading() {

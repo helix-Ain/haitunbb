@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html ng-app='app'>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+		<link rel='stylesheet' href='../CSS/ionic.min.css' />
+		<script src="../JS/ionic.bundle.min.js"></script>
+		<title></title>
+	</head>
+
+	<body ng-controller='app'>
+		<ion-header-bar class='bar-calm' style='background-color: #009BE8;background-image:url(../Images/d2_1.png);background-size:cover;'>
+			<h1 class='title' style='text-align: center;'>健康中心</h1>
+		</ion-header-bar>
+		<ion-content style='background-color: #E2EEF6;'>
+			<ion-list>
+				<ion-item style='padding:5px;line-height: 25px;'>
+					<span style='color:#7C7C7C;'>今天的晨检情况(7月13日)</span>
+					<button class='button button-calm button-small' style='float:right;width:30%;height:20px;'>查看详情</button>
+				</ion-item>
+				<ion-item style='padding:5px;'>
+					<div class='row' style='padding-left:0;'>
+						<div class='col' style='text-align: center;height:75px;'>
+							<div style='border:1px solid #F3F3F3;height:100%;border-radius: 5px;background:url(../Images/体温@2x.png) no-repeat;background-size:45% 100%;'>
+								<div style='margin-left:45%;text-align:center;line-height: 65px;color:#6B6B6B;'>
+									正常
+								</div>
+							</div>
+						</div>
+						<div class='col' style='text-align: center;height:75px;'>
+							<div style='border:1px solid #F3F3F3;height:100%;border-radius: 5px;background:url(../Images/晨检@2x.png) no-repeat;background-size:45% 100%;;'>
+								<div style='margin-left:45%;text-align:center;line-height: 65px;color:#6B6B6B;'>
+									正常
+								</div>
+							</div>
+						</div>
+					</div>
+				</ion-item>
+				<ion-item style='height:12px;padding: 0;background-color: #E2EEF6;border:none;'></ion-item>
+				<ion-item style='padding:7px;cursor:pointer;' onclick='location="healthrecord.html"'>
+					<img src="../Images/健康记录@2x.png" style='height:57px;width:57px;float:left;margin-right:10px;' />
+					<label style='font-size:15px;'>健康记录</label><br /><span style='font-size:13px;;color:#BCBCBC;display: block;margin-top: 7px;'>记录孩子的疾病史、过敏史</span>
+				</ion-item>
+				<ion-item style='padding:7px;cursor:pointer;' onclick='location="healthevaluation.html"'>
+					<img src="../Images/健康测评@2x.png" style='height:57px;width:57px;float:left;margin-right:10px;'/>
+					<label style='font-size:15px;'>健康测评</label><br /><span style='font-size:13px;color:#BCBCBC;display: block;margin-top: 7px;'>全面了解孩子的健康情况</span>
+				</ion-item>
+				<ion-item style='padding:7px;cursor:pointer;'>
+					<img src="../Images/健康指标@2x.png" style='height:57px;width:57px;float:left;margin-right:10px;' />
+					<label style='font-size:15px;'>健康指标</label><br /><span style='font-size:13px;color:#BCBCBC;display: block;margin-top:7px;'>查看孩子的身高体重是否符合指标</span>
+				</ion-item>
+				<ion-item style='padding:7px;cursor:pointer;' onclick='location="parentingencyclopedia.html"'>
+					<img src="../Images/育儿大全@2x.png" style='height:57px;width:57px;float:left;margin-right:10px;'/> 
+					<label style='font-size:15px;'>育儿大全</label><br /><span style='font-size:14px;color:#BCBCBC;display: block;margin-top:7px;'>查看更多幼儿健康资讯</span>
+				</ion-item>
+			</ion-list>
+		</ion-content>
+		<script>
+			angular.module('app', ['ionic']).controller('app', function($scope, $timeout, $ionicLoading) {
+				loading();
+
+				function loading() {
+					$ionicLoading.show({
+						content: 'Loading',
+						animation: 'fade-in',
+						showBackdrop: true,
+						maxWidth: 200,
+						showDelay: 0
+					});
+					$timeout(function() {
+						$ionicLoading.hide();
+					}, 1000);
+				}
+			});
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html ng-app='app'>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+		<link rel='stylesheet' href='../CSS/ionic.min.css' />
+		<script src="../JS/ionic.bundle.min.js"></script>
+		<title></title>
+		<style>
+			span.scope {
+				font-size: 14px;
+				color: #51ADD6;
+				display: inline-block;
+				margin-top: 3px;
+			}
+			
+			div.instance {
+				float: left;
+			}
+			
+			button.v1 {
+				height: 27px;
+				color: #FFFFFF;
+				background-color: #FF5658;
+				border: none;
+				border-radius: 3px;
+				float: right;
+			}
+			
+			button.v2 {
+				height: 27px;
+				color: #8D8D8D;
+				background-color: #DCDCDC;
+				border: none;
+				border-radius: 3px;
+				float: right;
+			}
+		</style>
+	</head>
+
+	<body ng-controller='app'>
+		<ion-header-bar class='bar-calm' style='background-color: #009BE8;background-image:url(../Images/d2_1.png);background-size:cover;'>
+			<button class='button button-icon icon ion-ios-arrow-left' onclick="history.back()">返回</button>
+			<h1 class='title'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;疫苗接种</h1>
+		</ion-header-bar>
+		<ion-content style='background-color: #E2EEF6;padding-bottom: 15px;'>
+			<ion-list>
+				<ion-item>
+					<div class='instance' style='cursor: pointer;' onclick='location="vaccineinoculation_detail.html"'>
+						百白破第四剂<br />
+						<span class='scope'>1岁半到2岁</span>
+					</div>
+					<button class='v2'>已接种</button>
+				</ion-item>
+				<ion-item>
+					<div class='instance' style='cursor: pointer;' onclick='location="vaccineinoculation_detail.html"'>
+						麻腮风第二剂<br />
+						<span class='scope'>1岁半到2岁</span>
+					</div>
+					<button class='v2'>已接种</button>
+				</ion-item>
+				<ion-item>
+					<div class='instance' style='cursor: pointer;' onclick='location="vaccineinoculation_detail.html"'>
+						乙脑减毒活疫苗第2,3剂量<br />
+						<span class='scope'>1岁半到两岁</span>
+					</div>
+					<button class='v2'>已接种</button>
+				</ion-item>
+				<ion-item>
+					<div class='instance' style='cursor: pointer;' onclick='location="vaccineinoculation_detail.html"'>
+						甲肝灭活疫苗<br />
+						<span class='scope'>1岁半到两岁</span>
+					</div>
+					<button class='v2'>已接种</button>
+				</ion-item>
+				<ion-item>
+					<div class='instance' style='cursor: pointer;' onclick='location="vaccineinoculation_detail.html"'>
+						流脑A+C疫苗第一剂<br />
+						<span class='scope'>1岁半到两岁</span>
+					</div>
+					<button class='v1'>未接种</button>
+				</ion-item>
+				<ion-item>
+					<div class='instance' style='cursor: pointer;' onclick='location="vaccineinoculation_detail.html"'>
+						脊髓灰质疫苗第四剂<br />
+						<span class='scope'>1岁半到两岁</span>
+					</div>
+					<button class='v1'>未接种</button>
+				</ion-item>
+			</ion-list>
+		</ion-content>
+		<script>
+			angular.module('app', ['ionic']).controller('app', function($scope, $timeout, $ionicLoading) {
+				loading();
+
+				function loading() {
+					$ionicLoading.show({
+						content: 'Loading',
+						animation: 'fade-in',
+						showBackdrop: true,
+						maxWidth: 200,
+						showDelay: 0
+					});
+					$timeout(function() {
+						$ionicLoading.hide();
+					}, 1000);
+				}
+
+			});
+		</script>
+	</body>
+
+</html>

@@ -4,9 +4,9 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-		<link rel='stylesheet' href='CSS/ionic.min.css' />
-		<script src="JS/ionic.bundle.min.js"></script>
-		<script src='JS/chart.min.js'></script>
+		<link rel='stylesheet' href='../CSS/ionic.min.css' />
+		<script src="../JS/ionic.bundle.min.js"></script>
+		<script src='../JS/chart.min.js'></script>
 		<title></title>
 		<style>
 			span.th,
@@ -43,7 +43,7 @@
 	</head>
 
 	<body ng-controller='app'>
-		<ion-header-bar class='bar-calm' style='background-color: #009BE8;background-image:url(Images/d2_1.png);background-size:cover;'>
+		<ion-header-bar class='bar-calm' style='background-color: #009BE8;background-image:url(../Images/d2_1.png);background-size:cover;'>
 			<button class='button button-icon icon ion-ios-arrow-left' onclick="location='reportcenter.html'">返回</button>
 			<h1 class='title'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;幼儿背景分析</h1>
 		</ion-header-bar>
@@ -62,23 +62,21 @@
 			<ion-list>
 				<ion-item style='text-align: center;padding-bottom: 25px;'>
 					<canvas id='myChart' wdith='200' height='200'></canvas>
-					<span style='position:absolute;bottom:1%;left:32%;color:#9F9F9F;font-size:15px;font-weight: 500;'>家庭收入分布图</span>
+					<span style='position:absolute;bottom:1%;left:32%;color:#9F9F9F;font-size:15px;font-weight: 500;'>是否留守儿童分布图</span>
 				</ion-item>
-				<ion-item style='height:12px;padding: 0;background-color: #E2EEF6;border:none;'></ion-item>
+				<ion-item style='height:12px;padding: 0;background-color: #E2EEF6;'></ion-item>
 				<ion-item><span class='th'>情况</span><span class='th'>人数</span></ion-item>
-				<ion-item><span class='td tdf'><div style='background-color:#AADC6E;' class='radius'></div>未填写</span><span class='td'>4</span></ion-item>
-				<ion-item><span class='td tdf'><div style='background-color:#F7A414;' class='radius'></div>年收入3-6万</span><span class='td'>1</span></ion-item>
-				<ion-item><span class='td tdf'><div style='background-color:#59C64E;' class='radius'></div>年收入3万以下</span><span class='td'>2</span></ion-item>
-				<ion-item><span class='td tdf'><div style='background-color:#F6E350;' class='radius'></div>年收入6-10万</span><span class='td'>4</span></ion-item>
-				<ion-item><span class='td tdf'><div style='background-color:#FB736B;' class='radius'></div>年收入10万以上</span><span class='td'>1</span></ion-item>
-				<ion-item style='height:12px;padding: 0;background-color: #E2EEF6;border:none;'></ion-item>
+				<ion-item><span class='td tdf'><div style='background-color:#A9D86E;' class='radius'></div>未填写</span><span class='td'>4</span></ion-item>
+				<ion-item><span class='td tdf'><div style='background-color:#F9A415;' class='radius'></div>不是</span><span class='td'>1</span></ion-item>
+				<ion-item><span class='td tdf'><div style='background-color:#57C749;' class='radius'></div>是</span><span class='td'>2</span></ion-item>
+			<ion-item style='height:12px;padding: 0;background-color: #E2EEF6;border:none;'></ion-item>
 			</ion-list>
 		</ion-content>
 		<script>
 			angular.module('app', ['ionic']).controller('app', function($scope, $timeout, $ionicLoading) {
 				loading();
 				loadChart();
-				$scope.tab = 2;
+				$scope.tab = 1;
 
 				function loading() {
 					$ionicLoading.show({
@@ -110,23 +108,15 @@
 					var data = [{
 						value: 27,
 						label: '未填写',
-						color: '#AADC6E'
+						color: '#A9D86E'
 					}, {
 						value: 13,
-						label: '年收入3-6万',
-						color: '#F7A414'
+						label: '不是',
+						color: '#F9A415'
 					}, {
 						value: 3,
-						label: '年收入3万以下',
-						color: '#59C64E'
-					},{
-						value: 4,
-						label: '年收入6-10万',
-						color: '#F6E350'
-					},{
-						value: 6,
-						label: '年收入10万以上',
-						color: '#FB736B'
+						label: '是',
+						color: '#57C749'
 					}];
 					new Chart(ctx).Doughnut(data, options);
 				}

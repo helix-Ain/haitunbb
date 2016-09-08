@@ -4,9 +4,9 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-		<link rel='stylesheet' href='CSS/ionic.min.css' />
-		<script src="JS/ionic.bundle.min.js"></script>
-		<script src='JS/chart.min.js'></script>
+		<link rel='stylesheet' href='../CSS/ionic.min.css' />
+		<script src="../JS/ionic.bundle.min.js"></script>
+		<script src='../JS/chart.min.js'></script>
 		<title></title>
 		<style>
 			span.th,
@@ -43,7 +43,7 @@
 	</head>
 
 	<body ng-controller='app'>
-		<ion-header-bar class='bar-calm' style='background-color: #009BE8;background-image:url(Images/d2_1.png);background-size:cover;'>
+		<ion-header-bar class='bar-calm' style='background-color: #009BE8;background-image:url(../Images/d2_1.png);background-size:cover;'>
 			<button class='button button-icon icon ion-ios-arrow-left' onclick="location='reportcenter.html'">返回</button>
 			<h1 class='title'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;师资统计</h1>
 		</ion-header-bar>
@@ -58,23 +58,19 @@
 				年龄统计
 			</a>
 		</ion-tabs>
-		<ion-content class='has-tabs-top'>
+		<ion-content class='has-tabs-top' style='background-color: #E2EEF6;'>
 			<ion-list>
 				<ion-item style='text-align: center;padding-bottom: 25px;'>
 					<canvas id='myChart' wdith='200' height='200'></canvas>
-					<span style='position:absolute;bottom:1%;left:37%;color:#9F9F9F;font-size:15px;font-weight: 500;'>职称统计分布图</span>
+					<span style='position:absolute;bottom:1%;left:37%;color:#9F9F9F;font-size:15px;font-weight: 500;'>年龄统计分布图</span>
 				</ion-item>
 				<ion-item style='height:12px;padding: 0;background-color: #E2EEF6;border:none;'></ion-item>
-				<ion-item><span class='th'>职称</span><span class='th'>人数</span></ion-item>
-				<ion-item><span class='td tdf'><div style='background-color:#A1D867;' class='radius'></div>未定职称</span><span class='td'>4</span></ion-item>
-				<ion-item><span class='td tdf'><div style='background-color:#F9A415;' class='radius'></div>幼中高</span><span class='td'>1</span></ion-item>
-				<ion-item><span class='td tdf'><div style='background-color:#56CC4D;' class='radius'></div>幼教高级</span><span class='td'>2</span></ion-item>
-				<ion-item><span class='td tdf'><div style='background-color:#4FD1F9;' class='radius'></div>幼教一级</span><span class='td'>5</span></ion-item>
-				<ion-item><span class='td tdf'><div style='background-color:#FBD43A;' class='radius'></div>其他职务</span><span class='td'>2</span></ion-item>
-				<ion-item><span class='td tdf'><div style='background-color:#F97069;' class='radius'></div>幼教三级</span><span class='td'>6</span></ion-item>
-				<ion-item><span class='td tdf'><div style='background-color:#A87AFC;' class='radius'></div>小学三级</span><span class='td'>1</span></ion-item>
-				<ion-item><span class='td tdf'><div style='background-color:#166F9B;' class='radius'></div>幼教二级</span><span class='td'>2</span></ion-item>
-				<ion-item><span class='td tdf'><div style='background-color:#E8116D;' class='radius'></div>中学高级</span><span class='td'>2</span></ion-item>
+				<ion-item><span class='th'>年龄</span><span class='th'>人数</span></ion-item>
+				<ion-item><span class='td tdf'><div style='background-color:#A0E04E;' class='radius'></div>未设置出生日期</span><span class='td'>17</span></ion-item>
+				<ion-item><span class='td tdf'><div style='background-color:#FBA711;' class='radius'></div>26-30岁</span><span class='td'>5</span></ion-item>
+				<ion-item><span class='td tdf'><div style='background-color:#5ACA4A;' class='radius'></div>20岁以下</span><span class='td'>8</span></ion-item>
+				<ion-item><span class='td tdf'><div style='background-color:#59D5F6;' class='radius'></div>21-25岁</span><span class='td'>2</span></ion-item>
+				<ion-item><span class='td tdf'><div style='background-color:#FA7EB8;' class='radius'></div>36-40岁</span><span class='td'>1</span></ion-item>
 				<ion-item style='height:12px;padding: 0;background-color: #E2EEF6;border:none;'></ion-item>
 			</ion-list>
 		</ion-content>
@@ -82,8 +78,8 @@
 			angular.module('app', ['ionic']).controller('app', function($scope, $timeout, $ionicLoading) {
 				loading();
 				loadChart();
-				$scope.tab = 2;
-
+				$scope.tab = 3;
+				
 				function loading() {
 					$ionicLoading.show({
 						content: 'Loading',
@@ -112,41 +108,25 @@
 					};
 					var ctx = document.getElementById('myChart').getContext('2d');
 					var data = [{
-						value: 27,
-						label: '未定职称',
-						color: '#A1D867'
+						value: 11,
+						label: '未设置出生日期',
+						color: '#A0E04E'
 					}, {
 						value: 5,
-						label: '幼中高',
-						color: '#F9A415'
+						label: '26-30岁',
+						color: '#FBA711'
 					}, {
 						value: 10,
-						label: '幼教高级',
-						color: '#56CC4D'
+						label: '20岁以下',
+						color: '#5ACA4A'
 					}, {
 						value: 5,
-						label: '幼教一级',
-						color: '#4FD1F9'
-					}, {
-						value: 3,
-						label: '其他职务',
-						color: '#FBD43A'
-					}, {
-						value: 3,
-						label: '幼教三级',
-						color: '#F97069'
-					}, {
-						value: 7,
-						label: '小学三级',
-						color: '#A87AFC'
-					}, {
-						value: 10,
-						label: '幼教二级',
-						color: '#166F9B'
-					}, {
-						value: 13,
-						label: '中学高级',
-						color: '#E8116D'
+						label: '21-25岁',
+						color: '#59D5F6'
+					},{
+						value: 14,
+						label: '36-40岁',
+						color:'#FA7EB8'
 					}];
 					new Chart(ctx).Doughnut(data, options);
 				}

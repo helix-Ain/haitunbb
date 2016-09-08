@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html ng-app='app'>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+		<link rel='stylesheet' href='../CSS/ionic.min.css' />
+		<script src="../JS/ionic.bundle.min.js"></script>
+		<title></title>
+	</head>
+
+	<body ng-controller='app'>
+		<ion-header-bar class='bar-calm' style='background-color: #009BE8;background-image:url(../Images/d2_1.png);background-size:cover;'>
+			<button class='button button-icon icon ion-ios-arrow-left' onclick="history.back()">返回</button>
+			<h1 class='title'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;疫苗接种</h1>
+		</ion-header-bar>
+		<ion-content style='background-color: #E2EEF6;padding-bottom: 15px;'>
+			<ion-list>
+				<ion-item style='text-align: center;border:none;padding-bottom: 5px;'>
+					<h2 style='color:#787878;letter-spacing: 1px;'>百白破第四剂</h2>
+				</ion-item>
+				<ion-item style='border:none;padding-bottom: 5px;'>
+					<p style='white-space: normal;letter-spacing: 1px;'>百白破疫苗用于经吸附百白破联合疫苗全程免疫后儿童的白喉，破伤风加强免疫。</p>
+				</ion-item>
+				<ion-item style='border:none;'>
+					<p style='margin-bottom: 10px;color:#6CC8F9;'>注意事项:</p>
+					<p style='white-space: normal;letter-spacing: 1px;'>
+						1、接种前应仔细核对剂量、疫苗效期，并充分摇匀，做好计划免疫手册的登记。<br/> 2、发现有摇不散的凝块、沉淀物或发现疫苗制品曾有冻结，贯注签不清和过期失效时不能使用。<br/> 3、询问是否有禁忌证的病史，以不发生意外事故为原则，保证免疫者尽可能得到接种。 <br/>4、吸附制剂注射后，局部可发生硬结，1—2月可吸收，在接种第二针时应更换部位（另一侧臂部注射）。 <br/>5、注射前须备有1%的肾上腺素，以供发生过敏性休克急救用。<br/> 6、皮内接种卡介苗者在一个月内不能在同一部位注射百白破疫苗。
+					</p>
+				</ion-item>
+			</ion-list>
+		</ion-content>
+		<ion-footer-bar style='padding:10px;border-top:1px solid #DDDDDD;'>
+			<h1 class='title' style='text-align: center;'>
+			  <button style='color:#FFFFFF;background-color: #01C3FF;border:none;border-radius:5px;width:35%;height:30px;font-size:15px;line-height:30px;margin-right: 15px;'>未接种</button>
+			  <button style='color:#FFFFFF;background-color: #7ADEFE;border:none;border-radius:5px;width:35%;height:30px;font-size:15px;line-height:30px;' disabled="disabled">已接种</button>
+			</h1>
+		</ion-footer-bar>
+		<script>
+			angular.module('app', ['ionic']).controller('app', function($scope, $timeout, $ionicLoading) {
+				loading();
+
+				function loading() {
+					$ionicLoading.show({
+						content: 'Loading',
+						animation: 'fade-in',
+						showBackdrop: true,
+						maxWidth: 200,
+						showDelay: 0
+					});
+					$timeout(function() {
+						$ionicLoading.hide();
+					}, 1000);
+				}
+
+			});
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html ng-app='app'>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+		<link rel='stylesheet' href='../CSS/ionic.min.css' />
+		<script src="../JS/ionic.bundle.min.js"></script>
+		<title></title>
+	</head>
+
+	<body ng-controller='app'>
+		<ion-header-bar class='bar-calm' style='background-color: #009BE8;background-image:url(../Images/d2_1.png);background-size:cover;'>
+			<button class='button button-icon icon ion-ios-arrow-left' onclick="location='healthcenter.html'">返回</button>
+			<h1 class='title'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;健康评测</h1>
+		</ion-header-bar>
+		<ion-content style='background-color: #E2EEF6;padding-bottom: 15px;'>
+			<ion-list>
+				<ion-item style='padding:0;height:125px;'>
+					<img src="../Images/配图@2x.png" style='width:100%;height:100%;' />
+				</ion-item>
+				<ion-item style='height:12px;padding: 0;background-color: #E2EEF6;border:none;'></ion-item>
+				<ion-item>
+					<label>日常饮食</label>
+					<button style='float:right;height:25px;font-size:15px;line-height: 25px;background-color:#7ADAFA;color:#FFFFFF;border:none;border-radius: 3px;'>&nbsp;立即评测&nbsp;</button>
+				</ion-item>
+				<ion-item>
+					<label>常见病评测</label>
+					<button style='float:right;height:25px;font-size:15px;line-height: 25px;background-color:#92E173;color:#FFFFFF;border:none;border-radius: 3px;'>&nbsp;立即评测&nbsp;</button>
+				</ion-item>
+				<ion-item>
+					<span>生活习惯</span>
+					<button style='float:right;height:25px;font-size:15px;line-height: 25px;background-color:#FE8AB3;color:#FFFFFF;border:none;border-radius: 3px;'>&nbsp;立即评测&nbsp;</button>
+				</ion-item>
+			</ion-list>
+		</ion-content>
+		<script>
+			angular.module('app', ['ionic']).controller('app', function($scope, $timeout, $ionicLoading) {
+				loading();
+
+				function loading() {
+					$ionicLoading.show({
+						content: 'Loading',
+						animation: 'fade-in',
+						showBackdrop: true,
+						maxWidth: 200,
+						showDelay: 0
+					});
+					$timeout(function() {
+						$ionicLoading.hide();
+					}, 1000);
+				}
+
+			});
+		</script>
+	</body>
+
+</html>

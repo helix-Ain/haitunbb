@@ -4,9 +4,9 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-		<link rel='stylesheet' href='CSS/ionic.min.css' />
-		<script src="JS/ionic.bundle.min.js"></script>
-		<script src='JS/chart.min.js'></script>
+		<link rel='stylesheet' href='../CSS/ionic.min.css' />
+		<script src="../JS/ionic.bundle.min.js"></script>
+		<script src='../JS/chart.min.js'></script>
 		<title></title>
 		<style>
 			span.th,
@@ -43,36 +43,34 @@
 	</head>
 
 	<body ng-controller='app'>
-		<ion-header-bar class='bar-calm' style='background-color: #009BE8;background-image:url(Images/d2_1.png);background-size:cover;'>
+		<ion-header-bar class='bar-calm' style='background-color: #009BE8;background-image:url(../Images/d2_1.png);background-size:cover;'>
 			<button class='button button-icon icon ion-ios-arrow-left' onclick="location='reportcenter.html'">返回</button>
 			<h1 class='title'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;幼儿背景分析</h1>
 		</ion-header-bar>
 		<ion-tabs class="tabs-striped tabs-top tabs-background-light tabs-color-calm">
-			<a class="tab-item" ng-class='{active:tab==1}' href='backgroundanalysis_parentedu.html'>
-				家长学历
+			<a class="tab-item" href='backgroundanalysis_parenttrade.html'>
+				&lt;&nbsp;家长行业
 			</a>
-			<a class="tab-item" ng-class='{active:tab==2}' href='backgroundanalysis_parenttrade.html'>
-				家长行业
+			<a class="tab-item" ng-class='{active:tab==1}' href='backgroundanalysis_parentoutlander.html'>
+				家长是否外地
 			</a>
-			<a class="tab-item" href='backgroundanalysis_parentoutlander.html'>
-				父母是否外地&nbsp;&gt;
+			<a class="tab-item" ng-class='{active:tab==2}' href='backgroundanalysis_parentrevenue.html'>
+				家庭年收入
 			</a>
 		</ion-tabs>
-		<ion-content class='has-tabs-top'>
+		<ion-content class='has-tabs-top' style='background-color: #E2EEF6;'>
 			<ion-list>
 				<ion-item style='text-align: center;padding-bottom: 25px;'>
 					<canvas id='myChart' wdith='200' height='200'></canvas>
-					<span style='position:absolute;bottom:1%;left:37%;color:#9F9F9F;font-size:15px;font-weight: 500;'>家长学历分布图</span>
+					<span style='position:absolute;bottom:1%;left:32%;color:#9F9F9F;font-size:15px;font-weight: 500;'>家庭收入分布图</span>
 				</ion-item>
 				<ion-item style='height:12px;padding: 0;background-color: #E2EEF6;border:none;'></ion-item>
-				<ion-item><span class='th'>学历</span><span class='th'>人数</span></ion-item>
-				<ion-item><span class='td tdf'><div style='background-color:#A9D86E;' class='radius'></div>未填写</span><span class='td'>4</span></ion-item>
-				<ion-item><span class='td tdf'><div style='background-color:#F9A415;' class='radius'></div>本科</span><span class='td'>1</span></ion-item>
-				<ion-item><span class='td tdf'><div style='background-color:#57C749;' class='radius'></div>专科</span><span class='td'>2</span></ion-item>
-				<ion-item><span class='td tdf'><div style='background-color:#FEE15D;' class='radius'></div>硕士</span><span class='td'>5</span></ion-item>
-				<ion-item><span class='td tdf'><div style='background-color:#F77568;' class='radius'></div>高中</span><span class='td'>2</span></ion-item>
-				<ion-item><span class='td tdf'><div style='background-color:#AB79FB;' class='radius'></div>初中及以下</span><span class='td'>6</span></ion-item>
-				<ion-item><span class='td tdf'><div style='background-color:#398EFE;' class='radius'></div>博士及以上</span><span class='td'>1</span></ion-item>
+				<ion-item><span class='th'>情况</span><span class='th'>人数</span></ion-item>
+				<ion-item><span class='td tdf'><div style='background-color:#AADC6E;' class='radius'></div>未填写</span><span class='td'>4</span></ion-item>
+				<ion-item><span class='td tdf'><div style='background-color:#F7A414;' class='radius'></div>年收入3-6万</span><span class='td'>1</span></ion-item>
+				<ion-item><span class='td tdf'><div style='background-color:#59C64E;' class='radius'></div>年收入3万以下</span><span class='td'>2</span></ion-item>
+				<ion-item><span class='td tdf'><div style='background-color:#F6E350;' class='radius'></div>年收入6-10万</span><span class='td'>4</span></ion-item>
+				<ion-item><span class='td tdf'><div style='background-color:#FB736B;' class='radius'></div>年收入10万以上</span><span class='td'>1</span></ion-item>
 				<ion-item style='height:12px;padding: 0;background-color: #E2EEF6;border:none;'></ion-item>
 			</ion-list>
 		</ion-content>
@@ -80,7 +78,7 @@
 			angular.module('app', ['ionic']).controller('app', function($scope, $timeout, $ionicLoading) {
 				loading();
 				loadChart();
-				$scope.tab = 1;
+				$scope.tab = 2;
 
 				function loading() {
 					$ionicLoading.show({
@@ -112,31 +110,23 @@
 					var data = [{
 						value: 27,
 						label: '未填写',
-						color: '#A9D86E'
+						color: '#AADC6E'
 					}, {
-						value: 5,
-						label: '本科',
-						color: '#F9A415'
-					}, {
-						value: 10,
-						label: '专科',
-						color: '#57C749'
-					}, {
-						value: 5,
-						label: '硕士',
-						color: '#FEE15D'
+						value: 13,
+						label: '年收入3-6万',
+						color: '#F7A414'
 					}, {
 						value: 3,
-						label: '高中',
-						color: '#F77568'
-					}, {
-						value: 3,
-						label: '初中及以下',
-						color: '#AB79FB'
-					}, {
-						value: 7,
-						label: '博士及以上',
-						color: '#398EFE'
+						label: '年收入3万以下',
+						color: '#59C64E'
+					},{
+						value: 4,
+						label: '年收入6-10万',
+						color: '#F6E350'
+					},{
+						value: 6,
+						label: '年收入10万以上',
+						color: '#FB736B'
 					}];
 					new Chart(ctx).Doughnut(data, options);
 				}

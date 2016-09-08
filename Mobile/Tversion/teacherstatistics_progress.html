@@ -4,9 +4,9 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-		<link rel='stylesheet' href='CSS/ionic.min.css' />
-		<script src="JS/ionic.bundle.min.js"></script>
-		<script src='JS/chart.min.js'></script>
+		<link rel='stylesheet' href='../CSS/ionic.min.css' />
+		<script src="../JS/ionic.bundle.min.js"></script>
+		<script src='../JS/chart.min.js'></script>
 		<title></title>
 		<style>
 			span.th,
@@ -43,7 +43,7 @@
 	</head>
 
 	<body ng-controller='app'>
-		<ion-header-bar class='bar-calm' style='background-color: #009BE8;background-image:url(Images/d2_1.png);background-size:cover;'>
+		<ion-header-bar class='bar-calm' style='background-color: #009BE8;background-image:url(../Images/d2_1.png);background-size:cover;'>
 			<button class='button button-icon icon ion-ios-arrow-left' onclick="location='reportcenter.html'">返回</button>
 			<h1 class='title'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;师资统计</h1>
 		</ion-header-bar>
@@ -58,19 +58,22 @@
 				年龄统计
 			</a>
 		</ion-tabs>
-		<ion-content class='has-tabs-top' style='background-color: #E2EEF6;'>
+		<ion-content class='has-tabs-top'>
 			<ion-list>
 				<ion-item style='text-align: center;padding-bottom: 25px;'>
 					<canvas id='myChart' wdith='200' height='200'></canvas>
-					<span style='position:absolute;bottom:1%;left:37%;color:#9F9F9F;font-size:15px;font-weight: 500;'>年龄统计分布图</span>
+					<span style='position:absolute;bottom:1%;left:37%;color:#9F9F9F;font-size:15px;font-weight: 500;'>学历统计分布图</span>
 				</ion-item>
 				<ion-item style='height:12px;padding: 0;background-color: #E2EEF6;border:none;'></ion-item>
-				<ion-item><span class='th'>年龄</span><span class='th'>人数</span></ion-item>
-				<ion-item><span class='td tdf'><div style='background-color:#A0E04E;' class='radius'></div>未设置出生日期</span><span class='td'>17</span></ion-item>
-				<ion-item><span class='td tdf'><div style='background-color:#FBA711;' class='radius'></div>26-30岁</span><span class='td'>5</span></ion-item>
-				<ion-item><span class='td tdf'><div style='background-color:#5ACA4A;' class='radius'></div>20岁以下</span><span class='td'>8</span></ion-item>
-				<ion-item><span class='td tdf'><div style='background-color:#59D5F6;' class='radius'></div>21-25岁</span><span class='td'>2</span></ion-item>
-				<ion-item><span class='td tdf'><div style='background-color:#FA7EB8;' class='radius'></div>36-40岁</span><span class='td'>1</span></ion-item>
+				<ion-item><span class='th'>学历</span><span class='th'>人数</span></ion-item>
+				<ion-item><span class='td tdf'><div style='background-color:#A1D867;' class='radius'></div>本科</span><span class='td'>4</span></ion-item>
+				<ion-item><span class='td tdf'><div style='background-color:#F9A415;' class='radius'></div>大专</span><span class='td'>1</span></ion-item>
+				<ion-item><span class='td tdf'><div style='background-color:#56CC4D;' class='radius'></div>未填写</span><span class='td'>2</span></ion-item>
+				<ion-item><span class='td tdf'><div style='background-color:#4FD1F9;' class='radius'></div>其他</span><span class='td'>5</span></ion-item>
+				<ion-item><span class='td tdf'><div style='background-color:#FBD43A;' class='radius'></div>硕士</span><span class='td'>2</span></ion-item>
+				<ion-item><span class='td tdf'><div style='background-color:#F97069;' class='radius'></div>高中以下</span><span class='td'>0</span></ion-item>
+				<ion-item><span class='td tdf'><div style='background-color:#A87AFC;' class='radius'></div>高中</span><span class='td'>1</span></ion-item>
+				<ion-item><span class='td tdf'><div style='background-color:#166F9B;' class='radius'></div>博士</span><span class='td'>2</span></ion-item>
 				<ion-item style='height:12px;padding: 0;background-color: #E2EEF6;border:none;'></ion-item>
 			</ion-list>
 		</ion-content>
@@ -78,7 +81,7 @@
 			angular.module('app', ['ionic']).controller('app', function($scope, $timeout, $ionicLoading) {
 				loading();
 				loadChart();
-				$scope.tab = 3;
+				$scope.tab = 1;
 				
 				function loading() {
 					$ionicLoading.show({
@@ -108,25 +111,37 @@
 					};
 					var ctx = document.getElementById('myChart').getContext('2d');
 					var data = [{
-						value: 11,
-						label: '未设置出生日期',
-						color: '#A0E04E'
+						value: 27,
+						label: '本科',
+						color: '#A1D867'
 					}, {
 						value: 5,
-						label: '26-30岁',
-						color: '#FBA711'
+						label: '大专',
+						color: '#F9A415'
 					}, {
 						value: 10,
-						label: '20岁以下',
-						color: '#5ACA4A'
+						label: '未填写',
+						color: '#56CC4D'
 					}, {
 						value: 5,
-						label: '21-25岁',
-						color: '#59D5F6'
+						label: '其他',
+						color: '#4FD1F9'
+					}, {
+						value: 3,
+						label: '硕士',
+						color: '#FBD43A'
+					}, {
+						value: 3,
+						label: '高中以下',
+						color: '#F97069'
+					}, {
+						value: 7,
+						label: '高中',
+						color: '#A87AFC'
 					},{
-						value: 14,
-						label: '36-40岁',
-						color:'#FA7EB8'
+						value: 10,
+						label: '博士',
+						color: '#166F9B'
 					}];
 					new Chart(ctx).Doughnut(data, options);
 				}

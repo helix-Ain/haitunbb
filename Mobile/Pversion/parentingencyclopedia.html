@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html ng-app='app'>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+		<link rel='stylesheet' href='../CSS/ionic.min.css' />
+		<script src="../JS/ionic.bundle.min.js"></script>
+		<title></title>
+		<style>
+			span.active {
+				color: #21B200;
+			}
+		</style>
+	</head>
+
+	<body ng-controller='app'>
+		<ion-header-bar class='bar-calm' style='background-color: #009BE8;background-image:url(../Images/d2_1.png);background-size:cover;'>
+			<button class='button button-icon icon ion-ios-arrow-left' onclick="location='healthcenter.html'">返回</button>
+			<h1 class='title'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;育儿大全</h1>
+		</ion-header-bar>
+		<ion-tabs class="tabs-striped tabs-top tabs-background-light tabs-color-calm">
+			<a class="tab-item" ng-class='{active:tab==1}'>
+				推荐阅读
+			</a>
+			<a class="tab-item" ng-class='{active:tab==2}'>
+				健康成长
+			</a>
+			<a class="tab-item" ng-class='{active:tab==3}'>
+				最新活动
+			</a>
+		</ion-tabs>
+		<ion-content class='has-tabs-top' style='background-color: #E2EEF6;'>
+			<ion-list>
+				<ion-item style='padding:0;height:140px;'>
+					<img src="../Images/hl.jpg" style='width:100%;height:100%;' />
+				</ion-item>
+				<ion-item style='background-color:#F2F2F2;height:40px;padding:0;'>
+					<div class='row'>
+						<div class='col' style='text-align: center;'>
+							<span ng-class='{active:assortment==1}' style='cursor:pointer;'>推荐阅读</span>
+						</div>
+						<div class='col' style='text-align: center;'>
+							<span ng-class='{active:assortment==2}' style='cursor:pointer;'>历史文章</span>
+						</div>
+					</div>
+				</ion-item>
+				<ion-item class='item-thumbnail-left'>
+					<img src="../Images/blue-album.jpg" />
+					<h2>Weezer</h2>
+					<p>Blue Album</p>
+				</ion-item>
+				<ion-item class='item-thumbnail-left'>
+					<img src="../Images/license-to-ill.jpg" />
+					<h2>Smashing Pumpkins</h2>
+					<p>Siamese Dream</p>
+				</ion-item>
+				<ion-item class='item-thumbnail-left'>
+					<img src="../Images/siamese-dream.jpg" />
+					<h2>Beastie Boys</h2>
+					<p>License To Ill</p>
+				</ion-item>
+			</ion-list>
+		</ion-content>
+		<script>
+			angular.module('app', ['ionic']).controller('app', function($scope, $timeout, $ionicLoading) {
+				loading();
+				$scope.tab = 1;
+				$scope.assortment = 1;
+				$scope.change = function(time) {
+					loading();
+				}
+
+				function loading() {
+					$ionicLoading.show({
+						content: 'Loading',
+						animation: 'fade-in',
+						showBackdrop: true,
+						maxWidth: 200,
+						showDelay: 0
+					});
+					$timeout(function() {
+						$ionicLoading.hide();
+					}, 1000);
+				}
+			});
+		</script>
+	</body>
+
+</html>

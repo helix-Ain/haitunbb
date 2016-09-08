@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html ng-app='app'>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+		<link rel='stylesheet' href='../CSS/ionic.min.css' />
+		<script src="../JS/ionic.bundle.min.js"></script>
+		<title></title>
+	</head>
+
+	<body ng-controller='app'>
+		<ion-header-bar class='bar-calm' style='background-color: #009BE8;background-image:url(../Images/d2_1.png);background-size:cover;'>
+			<button class='button button-icon icon ion-ios-arrow-left' onclick="location='healthcenter.html'">返回</button>
+			<h1 class='title'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;健康记录</h1>
+		</ion-header-bar>
+		<ion-content style='background-color: #E2EEF6;padding-bottom: 15px;'>
+			<ion-list>
+				<ion-item class='item-avatar'>
+					<img src="../Images/avatar.jpg"/>
+					<h2 style='color:#B7B7B7;font-size:15px;'>
+						姓名:&nbsp;&nbsp;<span style='display:inline-block;margin-right:20px;'>陈小婷</span>
+						性别:&nbsp;&nbsp;<span style='display: inline-block;'>女</span><br />
+						班级:&nbsp;&nbsp;<span style='display: inline-block;margin:10px 20px 0 0'>中一班</span>
+						生日:&nbsp;&nbsp;<span style='display: inline-block;'>2012-9-18</span>
+					</h2>
+				</ion-item>
+				<ion-item style='height:12px;padding: 0;background-color: #E2EEF6;border:none;'></ion-item>
+				<ion-item class='item-icon-right' style='cursor:pointer;' onclick='location="allergichistory.html"'>
+					<div style='font-size:17px;color:#DC6C6F;float:left;height:25px;margin-right:17px;'>过敏史：</div>
+					<span style='white-space:normal;color:#A5A5A5;font-size:15px;'>牛奶&nbsp;&nbsp;花生&nbsp;&nbsp;果仁&nbsp;&nbsp;牛肉&nbsp;&nbsp;毛发&nbsp;&nbsp;毛绒&nbsp;&nbsp;狗毛皮屑</span>
+					<i class="icon ion-ios-arrow-right" style='color:#C1C1C1;font-size:25px;margin-right: -10px;'></i>
+				</ion-item>
+				<ion-item class='item-icon-right' style='cursor:pointer;'>
+					<div style='font-size:17px;color:#47B787;float:left;height:25px;'>遗传病史：</div>
+					<span style='white-space: normal;color:#A5A5A5;font-size:15px;'>软骨发育不全&nbsp;&nbsp;抗维生素D拘偻病&nbsp;&nbsp;白化病</span>
+					<i class="icon ion-ios-arrow-right" style='color:#C1C1C1;font-size:25px;margin-right: -10px;'></i>
+				</ion-item>
+				<ion-item style='height:12px;padding: 0;background-color: #E2EEF6;border:none;'></ion-item>
+				<ion-item class='item-icon-right' style='padding:7px;cursor:pointer;' onclick='location="vaccineinoculation.html"'>
+					<img src="../Images/疫苗接种@2x.png" style='width:50px;height:50px;float:left;margin-right:10px;'/>
+						<label style='font-size:15px;'>育苗接种</label><br /><span style='font-size:13px;color:#BCBCBC;display: block;margin-top:5px;'>记录孩子的疫苗接种情况</span>
+					<i class="icon ion-ios-arrow-right" style='color:#C1C1C1;font-size:25px;margin-right: -10px;'></i>
+				</ion-item>	
+			</ion-list>
+		</ion-content>
+		<script>
+			angular.module('app', ['ionic']).controller('app', function($scope, $timeout, $ionicLoading) {
+				loading();
+				function loading() {
+					$ionicLoading.show({
+						content: 'Loading',
+						animation: 'fade-in',
+						showBackdrop: true,
+						maxWidth: 200,
+						showDelay: 0
+					});
+					$timeout(function() {
+						$ionicLoading.hide();
+					}, 1000);
+				}
+
+			});
+		</script>
+	</body>
+
+</html>
