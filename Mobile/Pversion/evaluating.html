@@ -1,9 +1,61 @@
 <!DOCTYPE html>
-<html>
+<html ng-app='app'>
+
 	<head>
 		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+		<link rel='stylesheet' href='../CSS/ionic.min.css' />
+		<script src="../JS/ionic.bundle.min.js"></script>
 		<title></title>
 	</head>
-	<body>
+
+	<body ng-controller='app'>
+		<ion-header-bar class='bar-calm' style='background-color: #009BE8;background-image:url(../Images/d2_1.png);background-size:cover;'>
+			<button class='button button-icon icon ion-ios-arrow-left' onclick="history.back()">返回</button>
+			<h1 class='title'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;评测</h1>
+		</ion-header-bar>
+		<ion-content style='background-color: #E2EEF6;padding-bottom: 15px;'>
+			<ion-list>
+				<ion-item style='text-align: center;border:none;'>
+					<h2 style='white-space: normal;'>主食米饭</h2>
+				</ion-item>
+				<ion-item>
+					<span style='white-space: normal;'>每周低于8次</span>
+					<img src="../Images/未勾选@2x.png" style='float:right;width:20px;height:20px;cursor:pointer;' />
+				</ion-item>
+				<ion-item>
+					<span style='white-space: normal;'>每周不低于8次</span>
+					<img src="../Images/勾选@2x.png" style='float:right;width:20px;height:20px;cursor:pointer;' />
+				</ion-item>
+				<ion-item>
+					<span style='white-space: normal;color:#C0C0C0;'>说明：了解儿童主食的饮食习惯，及时调整儿童的主食种类，进行合理搭配，避免因偏食、或挑食而影响儿童的生长发育。</span>
+				</ion-item>
+			</ion-list>
+		</ion-content>
+		<ion-footer-bar style='padding:10px;border-top:1px solid #DDDDDD;'>
+			<h1 class='title' style='text-align: center;'>
+				<button style='color:#FFFFFF;background-color:#01C3FF;border:none;border-radius: 5px;width:85%;height:35px;font-size:17px;line-height:35px;'>下一题</button>
+			</h1>
+		</ion-footer-bar>
+		<script>
+			angular.module('app', ['ionic']).controller('app', function($scope, $timeout, $ionicLoading) {
+				loading();
+
+				function loading() {
+					$ionicLoading.show({
+						content: 'Loading',
+						animation: 'fade-in',
+						showBackdrop: true,
+						maxWidth: 200,
+						showDelay: 0
+					});
+					$timeout(function() {
+						$ionicLoading.hide();
+					}, 1000);
+				}
+
+			});
+		</script>
 	</body>
+
 </html>

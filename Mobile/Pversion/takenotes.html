@@ -1,9 +1,156 @@
 <!DOCTYPE html>
-<html>
+<html ng-app='app'>
+
 	<head>
 		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+		<link rel='stylesheet' href='../CSS/ionic.min.css' />
+		<script src="../JS/ionic.bundle.min.js"></script>
 		<title></title>
+		<style>
+			table{
+				width:100%;
+				border:1px solid #D9D9D9;
+			}
+			tr{
+				height:30px;
+			}
+			th{
+				line-height: 30px;
+				text-align: center;
+				background-color: #E5E5E5;
+			}
+			td{
+				border:1px solid #D9D9D9;
+				text-align: center;
+				line-height: 30px;
+			}
+		</style>
 	</head>
-	<body>
+
+	<body ng-controller='app'>
+		<ion-header-bar class='bar-calm' style='background-color: #009BE8;background-image:url(../Images/d2_1.png);background-size:cover;'>
+			<button class='button button-icon icon ion-ios-arrow-left' onclick="history.back()">返回</button>
+			<h1 class='title'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;记录</h1>
+		</ion-header-bar>
+		<ion-content style='background-color: #E2EEF6;padding-bottom: 15px;'>
+			<ion-list>
+				<label class="item item-input" style='text:center;padding-left:12.5%;padding-right: 12.5%;border:none;padding-top:15px;'>
+   					 日期&nbsp;&nbsp;&nbsp;<input type="date" style='border:1px solid #EAEAEA;border-radius: 5px;'>
+  				</label>
+				<label class="item item-input" style='text:center;padding-left:12.5%;padding-right: 12.5%;border:none;'>
+   					 身高&nbsp;&nbsp;&nbsp;<input type="number" style='border:1px solid #EAEAEA;border-radius: 5px;' placeholder="&nbsp;请输入身高(单位cm)">
+  				</label>
+				<label class="item item-input" style='text:center;padding-left:12.5%;padding-right: 12.5%;border:none;'>
+   					 体重&nbsp;&nbsp;&nbsp;<input type="number" style='border:1px solid #EAEAEA;border-radius: 5px;' placeholder="&nbsp;请输入体重(单位kg)">
+  				</label>
+				<ion-item style='border:none;text-align: center;'>
+					<button style='border:none;border-radius: 5px;background-color: #00C4FF;color:#FFFFFF;width:65%;height:30px;'>保存</button>
+				</ion-item>
+				<ion-item style='border:none;text-align: center;padding-top:0;'>
+					<span style='font-size:14px;color:#CFCFCF;'>——————<span style='margin:0 25px;'>历史记录</span>——————</span>
+				</ion-item>
+				<ion-item style='border:none;'>
+					<table>
+						<thead>
+							<tr>
+								<th style='width:7%;'></th>
+								<th style='width:30%;'>日期</th>
+								<th style='width:30%;'>身高(cm)</th>
+								<th style='width:30%;'>体重(kg)</th>
+							</tr>
+						</thead>
+                        <tbody>
+                        	<tr>
+                        		<td>1</td>
+                        		<td>2016/7/16</td>
+                        		<td>142</td>
+                        		<td>19</td>
+                        	</tr>
+                        	<tr>
+                        		<td>2</td>
+                        		<td>2016/7/16</td>
+                        		<td>142</td>
+                        		<td>19</td>
+                        	</tr>
+                        	<tr>
+                        		<td>3</td>
+                        		<td>2016/7/16</td>
+                        		<td>142</td>
+                        		<td>19</td>
+                        	</tr>
+                        	<tr>
+                        		<td>4</td>
+                        		<td>2016/7/16</td>
+                        		<td>142</td>
+                        		<td>19</td>
+                        	</tr>
+                        	<tr>
+                        		<td>5</td>
+                        		<td>2016/7/16</td>
+                        		<td>142</td>
+                        		<td>19</td>
+                        	</tr>
+                        	<tr>
+                        		<td>6</td>
+                        		<td>2016/7/16</td>
+                        		<td>142</td>
+                        		<td>19</td>
+                        	</tr>
+                        	<tr>
+                        		<td>7</td>
+                        		<td>2016/7/16</td>
+                        		<td>142</td>
+                        		<td>19</td>
+                        	</tr>
+                        	<tr>
+                        		<td>8</td>
+                        		<td>2016/7/16</td>
+                        		<td>142</td>
+                        		<td>19</td>
+                        	</tr>
+                        	 <tr>
+                        		<td>9</td>
+                        		<td>2016/7/16</td>
+                        		<td>142</td>
+                        		<td>19</td>
+                        	</tr>
+                        	  	<tr>
+                        		<td>10</td>
+                        		<td>2016/7/16</td>
+                        		<td>142</td>
+                        		<td>19</td>
+                        	</tr>
+                        	  	<tr>
+                        		<td>11</td>
+                        		<td>2016/7/16</td>
+                        		<td>142</td>
+                        		<td>19</td>
+                        	</tr>
+                        </tbody>
+					</table>
+				</ion-item>
+			</ion-list>
+		</ion-content>
+		<script>
+			angular.module('app', ['ionic']).controller('app', function($scope, $timeout, $ionicLoading) {
+				loading();
+
+				function loading() {
+					$ionicLoading.show({
+						content: 'Loading',
+						animation: 'fade-in',
+						showBackdrop: true,
+						maxWidth: 200,
+						showDelay: 0
+					});
+					$timeout(function() {
+						$ionicLoading.hide();
+					}, 1000);
+				}
+
+			});
+		</script>
 	</body>
+
 </html>

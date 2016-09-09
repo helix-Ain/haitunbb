@@ -1,9 +1,121 @@
 <!DOCTYPE html>
-<html>
+<html ng-app='app'>
+
 	<head>
 		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+		<link rel='stylesheet' href='../CSS/ionic.min.css' />
+		<script src="../JS/ionic.bundle.min.js"></script>
 		<title></title>
 	</head>
-	<body>
+
+	<body ng-controller='app'>
+		<ion-header-bar class='bar-calm' style='background-color: #009BE8;background-image:url(../Images/d2_1.png);background-size:cover;'>
+			<button class='button button-icon icon ion-ios-arrow-left' onclick="history.back()">返回</button>
+			<h1 class='title'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;遗传病史</h1>
+		</ion-header-bar>
+		<ion-content style='background-color: #E2EEF6;padding-bottom: 15px;'>
+			<ion-list>
+				<ion-item class='item-divider'>
+					如果无遗传病史，请选择
+				</ion-item>
+				<ion-item>
+					无遗传病史
+					<img src="../Images/未勾选@2x.png" style='float:right;width:20px;height:20px;cursor:pointer;' />
+				</ion-item>
+				<ion-item class='item-divider'>
+					单基因遗传病
+				</ion-item>
+				<ion-item>
+					软骨发育不全
+					<img src="../Images/未勾选@2x.png" style='float:right;width:20px;height:20px;cursor:pointer;' />
+				</ion-item>
+				<ion-item>
+					抗维生素D佝偻病
+					<img src="../Images/勾选@2x.png" style='float:right;width:20px;height:20px;cursor:pointer;' />
+				</ion-item>
+				<ion-item>
+					先天性聋哑
+					<img src="../Images/勾选@2x.png" style='float:right;width:20px;height:20px;cursor:pointer;' />
+				</ion-item>
+				<ion-item>
+					苯丙酮尿症
+					<img src="../Images/勾选@2x.png" style='float:right;width:20px;height:20px;cursor:pointer;' />
+				</ion-item>
+				<ion-item>
+					并指
+					<img src="../Images/未勾选@2x.png" style='float:right;width:20px;height:20px;cursor:pointer;' />
+				</ion-item>
+				<ion-item>
+					血友病
+					<img src="../Images/未勾选@2x.png" style='float:right;width:20px;height:20px;cursor:pointer;' />
+				</ion-item>
+				<ion-item>
+					红绿色盲
+					<img src="../Images/未勾选@2x.png" style='float:right;width:20px;height:20px;cursor:pointer;' />
+				</ion-item>
+				<ion-item>
+					进行性肌营养不良
+					<img src="../Images/未勾选@2x.png" style='float:right;width:20px;height:20px;cursor:pointer;' />
+				</ion-item>
+				<ion-item class='item-divider'>
+					多基因遗传病
+				</ion-item>
+				<ion-item>
+					唇裂
+					<img src="../Images/勾选@2x.png" style='float:right;width:20px;height:20px;cursor:pointer;' />
+				</ion-item>
+				<ion-item>
+					腭裂
+					<img src="../Images/未勾选@2x.png" style='float:right;width:20px;height:20px;cursor:pointer;' />
+				</ion-item>
+				<ion-item>
+					唇腭裂
+					<img src="../Images/未勾选@2x.png" style='float:right;width:20px;height:20px;cursor:pointer;' />
+				</ion-item>
+				<ion-item class='item-divider'>
+					染色体异常遗传病
+				</ion-item>
+				<ion-item>
+					21三体综合症
+					<img src="../Images/勾选@2x.png" style='float:right;width:20px;height:20px;cursor:pointer;' />
+				</ion-item>
+				<ion-item>
+					性腺发育不良
+					<img src="../Images/未勾选@2x.png" style='float:right;width:20px;height:20px;cursor:pointer;' />
+				</ion-item>
+				<ion-item class='item-divider'>
+					其他
+				</ion-item>
+				<ion-item>
+					<textarea rows='5' style='resize: none;border:1px solid #959595;width:100%;border-radius: 5px;'></textarea>
+				</ion-item>
+			</ion-list>
+		</ion-content>
+		<ion-footer-bar style='padding:10px;border-top:1px solid #DDDDDD;'>
+			<h1 class='title' style='text-align: center;'>
+				<button style='color:#FFFFFF;background-color:#01C3FF;border:none;border-radius: 5px;width:85%;height:35px;font-size:17px;line-height:35px;'>保存</button>
+			</h1>
+		</ion-footer-bar>
+		<script>
+			angular.module('app', ['ionic']).controller('app', function($scope, $timeout, $ionicLoading) {
+				loading();
+
+				function loading() {
+					$ionicLoading.show({
+						content: 'Loading',
+						animation: 'fade-in',
+						showBackdrop: true,
+						maxWidth: 200,
+						showDelay: 0
+					});
+					$timeout(function() {
+						$ionicLoading.hide();
+					}, 1000);
+				}
+
+			});
+		</script>
 	</body>
+
 </html>

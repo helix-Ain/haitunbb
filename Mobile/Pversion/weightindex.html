@@ -1,9 +1,125 @@
 <!DOCTYPE html>
-<html>
+<html ng-app='app'>
+
 	<head>
 		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+		<link rel='stylesheet' href='../CSS/ionic.min.css' />
+		<script src="../JS/ionic.bundle.min.js"></script>
+		<script src='../JS/chart.min.js'></script>
 		<title></title>
+		<style>
+			span.active {
+				color: #21B200;
+			}
+		</style>
 	</head>
-	<body>
+
+	<body ng-controller='app'>
+		<ion-header-bar class='bar-calm' style='background-color: #009BE8;background-image:url(../Images/d2_1.png);background-size:cover;'>
+			<button class='button button-icon icon ion-ios-arrow-left' onclick="location='healthcenter.html'">返回</button>
+			<h1 class='title'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;健康指标</h1>
+		</ion-header-bar>
+		<ion-tabs class="tabs-striped tabs-top tabs-background-light tabs-color-calm">
+			<a class="tab-item" ng-class='{active:tab==1}' href='heightindex.html'>
+				身高指标
+			</a>
+			<a class="tab-item" ng-class='{active:tab==2}' href='weightindex.html'>
+				体重指标
+			</a>
+		</ion-tabs>
+		<ion-content class='has-tabs-top' style='background-color: #E2EEF6;'>
+			<ion-list>
+				<ion-item style='height:12px;padding: 0;background-color: #E2EEF6;border:none;'></ion-item>
+				<ion-item style='text-indent: 2em;border:none;padding:10px 15px 10px;'>
+					<span style='white-space: normal;font-size:15px;'>胖嘟嘟3岁10个月了，宝宝的生理指标正常均值为体重：11.55~19.85kg。</span>
+				</ion-item>
+				<ion-item style='border:none;text-align: center;padding-top:0;padding-bottom: 10px;'>
+					<canvas id="myChart" width="275" height="300"></canvas>
+				</ion-item>
+				<ion-item style='border:none;padding:0 0 10px;text-align: center;font-size: 13px;'>
+					<input type='checkbox'/>&nbsp;<span style='position:relative;top:-2px;'>绿色区间为正常参考值</span>
+				</ion-item>
+			</ion-list>
+		</ion-content>
+		<ion-footer-bar style='padding:10px;border-top:1px solid #DDDDDD;'>
+			<h1 class='title' style='text-align: center;'>
+				<button style='color:#FFFFFF;background-color:#01C3FF;border:none;border-radius: 5px;width:70%;height:33px;font-size:17px;line-height:35px;' onclick='location="takenotes.html"'>添加记录</button>
+			</h1>
+		</ion-footer-bar>
+		<script>
+			angular.module('app', ['ionic']).controller('app', function($scope, $timeout, $ionicLoading) {
+				loading();
+				loadChart();
+				$scope.tab = 2;
+				$scope.change = function(time) {
+					loading();
+				}
+
+				function loadChart() {
+					var ctx = document.getElementById("myChart").getContext("2d");
+					var data = {
+						labels: ["9月", "10月", "11月", "12月", "1月", "2月"],
+						datasets: [{
+							fillColor: 'transparent',
+							strokeColor: "#6ECEEE",
+							pointColor: "#6ECEEE",
+							pointStrokeColor: "#fff",
+							data: [null, null, null, 13.05, 21.75, null]
+						},{
+							fillColor: 'rgba(200,248,254,0.5)',
+							strokeColor: null,
+							pointColor: null,
+							pointStrokeColor: "#fff",
+							data: [11.55, null, null, null, null, 19.85]
+						}]
+					};
+					var options = {
+						scaleOverlay: false,
+						scaleOverride: false,
+						scaleSteps: null,
+						scaleStepWidth: null,
+						scaleStartValue: null,
+						scaleLineColor: "rgba(0,0,0,.1)",
+						scaleLineWidth: 1,
+						scaleShowLabels: true,
+						scaleLabel: "<%=value%>",
+						scaleFontFamily: "'Arial'",
+						scaleFontSize: 12,
+						scaleFontStyle: "normal",
+						scaleFontColor: "#666",
+						scaleShowGridLines: true,
+						scaleGridLineColor: "#D4EFF2",
+						scaleGridLineWidth: 1,
+						bezierCurve: true,
+						pointDot: true,
+						pointDotRadius: 3,
+						pointDotStrokeWidth: 1,
+						datasetStroke: true,
+						datasetStrokeWidth: 2,
+						datasetFill: true,
+						animation: true,
+						animationSteps: 60,
+						animationEasing: "easeOutQuart",
+						onAnimationComplete: null
+					}
+					new Chart(ctx).Line(data, options);
+				}
+
+				function loading() {
+					$ionicLoading.show({
+						content: 'Loading',
+						animation: 'fade-in',
+						showBackdrop: true,
+						maxWidth: 200,
+						showDelay: 0
+					});
+					$timeout(function() {
+						$ionicLoading.hide();
+					}, 1000);
+				}
+			});
+		</script>
 	</body>
+
 </html>
