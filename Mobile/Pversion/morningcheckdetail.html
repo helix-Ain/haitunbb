@@ -1,9 +1,104 @@
 <!DOCTYPE html>
-<html>
+<html ng-app='app'>
+
 	<head>
 		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+		<link rel='stylesheet' href='../CSS/ionic.min.css' />
+		<script src="../JS/ionic.bundle.min.js"></script>
 		<title></title>
+		<style>
+			.item {
+				padding: 9px;
+				line-height: 25px;
+			}
+			
+			span.colu {
+				display: inline-block;
+				width: 50%;
+				font-size: 15px;
+				text-align: center;
+			}
+			
+			img.tag {
+				display: inline-block;
+				width: 25px;
+				height: 25px;
+				margin-bottom: -7px;
+			}
+		</style>
 	</head>
-	<body>
+
+	<body ng-controller='app'>
+		<ion-header-bar class='bar-calm' style='background-color: #009BE8;background-image:url(../Images/d2_1.png);background-size:cover;'>
+			<button class='button button-icon icon ion-ios-arrow-left' onclick="history.back()">返回</button>
+			<h1 class='title'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;晨检明细</h1>
+		</ion-header-bar>
+		<ion-content style='background-color: #E2EEF6;padding-bottom: 15px;'>
+			<div class='list list-inset'>
+				<ion-item style='background-color: #53C6FD;color:#FFFFFF;border:none;'>
+					<span class='colu'>项目</span><span class='colu'>结果</span>
+				</ion-item>
+				<ion-item>
+					<span class='colu'>入园</span><span class='colu'>08:01</span>
+				</ion-item>
+				<ion-item>
+					<span class='colu'>离园</span><span class='colu'>-</span>
+				</ion-item>
+				<ion-item>
+					<span class='colu'>体温</span><span class='colu'>正常</span>
+				</ion-item>
+				<ion-item>
+					<span class='colu'>家长带回</span><span class='colu'><img src="../Images/赞-图标@2x.png" class='tag'/></span>
+				</ion-item>
+				<ion-item>
+					<span class='colu'>服药提醒</span><span class='colu'><img src="../Images/赞-图标@2x.png" class='tag'/></span>
+				</ion-item>
+				<ion-item>
+					<span class='colu'>咳嗽</span><span class='colu'><img src="../Images/赞-图标@2x.png" class='tag'/></span>
+				</ion-item>
+				<ion-item>
+					<span class='colu'>喉咙发炎</span><span class='colu'><img src="../Images/赞-图标@2x.png" class='tag'/></span>
+				</ion-item>
+				<ion-item>
+					<span class='colu'>流鼻涕</span><span class='colu'><img src="../Images/赞-图标@2x.png" class='tag'/></span>
+				</ion-item>
+				<ion-item>
+					<span class='colu'>皮疹</span><span class='colu'><img src="../Images/赞-图标@2x.png" class='tag'/></span>
+				</ion-item>
+				<ion-item>
+					<span class='colu'>腹泻</span><span class='colu'><img src="../Images/赞-图标@2x.png" class='tag'/></span>
+				</ion-item>
+				<ion-item>
+					<span class='colu'>红眼病</span><span class='colu'><img src="../Images/赞-图标@2x.png" class='tag'/></span>
+				</ion-item>
+				<ion-item>
+					<span class='colu'>剪指甲</span><span class='colu'><img src="../Images/赞-图标@2x.png" class='tag'/></span>
+				</ion-item>
+				<ion-item>
+					<span class='colu'>重点观察</span><span class='colu'><img src="../Images/赞-图标@2x.png" class='tag'/></span>
+				</ion-item>
+			</div>
+		</ion-content>
+		<script>
+			angular.module('app', ['ionic']).controller('app', function($scope, $timeout, $ionicLoading) {
+				loading();
+
+				function loading() {
+					$ionicLoading.show({
+						content: 'Loading',
+						animation: 'fade-in',
+						showBackdrop: true,
+						maxWidth: 200,
+						showDelay: 0
+					});
+					$timeout(function() {
+						$ionicLoading.hide();
+					}, 1000);
+				}
+
+			});
+		</script>
 	</body>
+
 </html>

@@ -7,6 +7,11 @@
 		<link rel='stylesheet' href='../CSS/ionic.min.css' />
 		<script src="../JS/ionic.bundle.min.js"></script>
 		<title></title>
+		<style>
+			.item img{
+				height:57px;width:57px;float:left;margin-right:10px;
+			}
+		</style>
 	</head>
 
 	<body ng-controller='app'>
@@ -17,7 +22,7 @@
 			<ion-list>
 				<ion-item style='padding:5px;line-height: 25px;'>
 					<span style='color:#7C7C7C;'>今天的晨检情况(7月13日)</span>
-					<button class='button button-calm button-small' style='float:right;width:30%;height:20px;'>查看详情</button>
+					<button class='button button-calm button-small' style='float:right;width:30%;height:20px;' onclick='location="morningcheckdetail.html"'>查看详情</button>
 				</ion-item>
 				<ion-item style='padding:5px;'>
 					<div class='row' style='padding-left:0;'>
@@ -39,19 +44,19 @@
 				</ion-item>
 				<ion-item style='height:12px;padding: 0;background-color: #E2EEF6;border:none;'></ion-item>
 				<ion-item style='padding:7px;cursor:pointer;' onclick='location="healthrecord.html"'>
-					<img src="../Images/健康记录@2x.png" style='height:57px;width:57px;float:left;margin-right:10px;' />
+					<img src="../Images/健康记录@2x.png" />
 					<label style='font-size:15px;'>健康记录</label><br /><span style='font-size:13px;;color:#BCBCBC;display: block;margin-top: 7px;'>记录孩子的疾病史、过敏史</span>
 				</ion-item>
 				<ion-item style='padding:7px;cursor:pointer;' onclick='location="healthevaluation.html"'>
-					<img src="../Images/健康测评@2x.png" style='height:57px;width:57px;float:left;margin-right:10px;'/>
+					<img src="../Images/健康测评@2x.png" />
 					<label style='font-size:15px;'>健康测评</label><br /><span style='font-size:13px;color:#BCBCBC;display: block;margin-top: 7px;'>全面了解孩子的健康情况</span>
 				</ion-item>
 				<ion-item style='padding:7px;cursor:pointer;' onclick='location="heightindex.html"'>
-					<img src="../Images/健康指标@2x.png" style='height:57px;width:57px;float:left;margin-right:10px;' />
+					<img src="../Images/健康指标@2x.png" />
 					<label style='font-size:15px;'>健康指标</label><br /><span style='font-size:13px;color:#BCBCBC;display: block;margin-top:7px;'>查看孩子的身高体重是否符合指标</span>
 				</ion-item>
 				<ion-item style='padding:7px;cursor:pointer;' onclick='location="parentingencyclopedia.html"'>
-					<img src="../Images/育儿大全@2x.png" style='height:57px;width:57px;float:left;margin-right:10px;'/> 
+					<img src="../Images/育儿大全@2x.png" /> 
 					<label style='font-size:15px;'>育儿大全</label><br /><span style='font-size:14px;color:#BCBCBC;display: block;margin-top:7px;'>查看更多幼儿健康资讯</span>
 				</ion-item>
 			</ion-list>
