@@ -45,17 +45,17 @@
 						</div>
 					</div>
 				</ion-item>
-				<ion-item class='item-thumbnail-left'>
+				<ion-item class='item-thumbnail-left' ng-click='detail()'>
 					<img src="../Images/blue-album.jpg" />
 					<h2>Weezer</h2>
 					<p>Blue Album</p>
 				</ion-item>
-				<ion-item class='item-thumbnail-left'>
+				<ion-item class='item-thumbnail-left' ng-click='detail()'>
 					<img src="../Images/license-to-ill.jpg" />
 					<h2>Smashing Pumpkins</h2>
 					<p>Siamese Dream</p>
 				</ion-item>
-				<ion-item class='item-thumbnail-left'>
+				<ion-item class='item-thumbnail-left' ng-click='detail()'>
 					<img src="../Images/siamese-dream.jpg" />
 					<h2>Beastie Boys</h2>
 					<p>License To Ill</p>
@@ -63,12 +63,16 @@
 			</ion-list>
 		</ion-content>
 		<script>
-			angular.module('app', ['ionic']).controller('app', function($scope, $timeout, $ionicLoading) {
+			angular.module('app', ['ionic']).controller('app', function($scope, $timeout, $ionicLoading,$window) {
 				loading();
 				$scope.tab = 1;
 				$scope.assortment = 1;
 				$scope.change = function(time) {
 					loading();
+				}
+				
+				$scope.detail = function(){
+					$window.location = 'articledetails.html';
 				}
 
 				function loading() {
