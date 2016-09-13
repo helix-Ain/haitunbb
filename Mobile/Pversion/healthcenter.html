@@ -8,13 +8,16 @@
 		<script src="../JS/ionic.bundle.min.js"></script>
 		<title></title>
 		<style>
-			.item img{
-				height:57px;width:57px;float:left;margin-right:10px;
+			.item img {
+				height: 57px;
+				width: 57px;
+				float: left;
+				margin-right: 10px;
 			}
 		</style>
 	</head>
 
-	<body ng-controller='app'>
+	<body ng-controller='app' ng-init='init()'>
 		<ion-header-bar class='bar-calm' style='background-color: #009BE8;background-image:url(../Images/d2_1.png);background-size:cover;'>
 			<h1 class='title' style='text-align: center;'>健康中心</h1>
 		</ion-header-bar>
@@ -56,15 +59,16 @@
 					<label style='font-size:15px;'>健康指标</label><br /><span style='font-size:13px;color:#BCBCBC;display: block;margin-top:7px;'>查看孩子的身高体重是否符合指标</span>
 				</ion-item>
 				<ion-item style='padding:7px;cursor:pointer;' onclick='location="parentingencyclopedia.html"'>
-					<img src="../Images/育儿大全@2x.png" /> 
+					<img src="../Images/育儿大全@2x.png" />
 					<label style='font-size:15px;'>育儿大全</label><br /><span style='font-size:14px;color:#BCBCBC;display: block;margin-top:7px;'>查看更多幼儿健康资讯</span>
 				</ion-item>
 			</ion-list>
 		</ion-content>
 		<script>
-			angular.module('app', ['ionic']).controller('app', function($scope, $timeout, $ionicLoading) {
-				loading();
-
+			angular.module('app', ['ionic']).controller('app', function($scope, $timeout, $ionicLoading, $http) {
+                $scope.init = function(){
+                	loading();
+                }
 				function loading() {
 					$ionicLoading.show({
 						content: 'Loading',
@@ -76,6 +80,14 @@
 					$timeout(function() {
 						$ionicLoading.hide();
 					}, 1000);
+				}
+
+				function loadData() {
+					$http.get('', {}).success(function(result) {
+
+					}).error(function(result) {
+
+					});
 				}
 			});
 		</script>

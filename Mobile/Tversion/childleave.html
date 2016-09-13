@@ -16,13 +16,14 @@
 				font-size: 14px;
 				color: #828282;
 			}
-			.item{
-				padding:12px;
+			
+			.item {
+				padding: 12px;
 			}
 		</style>
 	</head>
 
-	<body ng-controller='app'>
+	<body ng-controller='app' ng-init='init()'>
 		<ion-header-bar class='bar-calm' style='background-color: #009BE8;background-image:url(../Images/d2_1.png);background-size:cover;'>
 			<button class='button button-icon icon ion-ios-arrow-left' onclick="location='reportcenter.html'">返回</button>
 			<h1 class='title'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;幼儿请假</h1>
@@ -50,9 +51,12 @@
 			</ion-list>
 		</ion-content>
 		<script>
-			angular.module('app', ['ionic']).controller('app', function($scope, $timeout, $ionicLoading) {
-				loading();
-				$scope.time = '2016年4月5日';
+			angular.module('app', ['ionic']).controller('app', function($scope, $timeout, $ionicLoading, $http) {
+				$scope.init = function() {
+					loading();
+					$scope.time = '2016年4月5日';
+				}
+
 				$scope.change = function(time) {
 					loading();
 				}
@@ -68,6 +72,14 @@
 					$timeout(function() {
 						$ionicLoading.hide();
 					}, 1000);
+				}
+
+				function loadData() {
+					$http.get('', {}).success(function(result) {
+
+					}).error(function(result) {
+
+					});
 				}
 			});
 		</script>

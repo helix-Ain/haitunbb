@@ -42,7 +42,7 @@
 		</style>
 	</head>
 
-	<body ng-controller='app'>
+	<body ng-controller='app' ng-init='init()'>
 		<ion-header-bar class='bar-calm' style='background-color: #009BE8;background-image:url(../Images/d2_1.png);background-size:cover;'>
 			<button class='button button-icon icon ion-ios-arrow-left' onclick="location='reportcenter.html'">返回</button>
 			<h1 class='title'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;入离园分析</h1>
@@ -68,7 +68,7 @@
 					<canvas id='myChart' wdith='200' height='200'></canvas>
 					<span style='position:absolute;bottom:1%;left:37%;color:#9F9F9F;font-size:15px;font-weight: 500;'>离园分析图</span>
 				</ion-item>
-			    <ion-item style='height:12px;padding: 0;background-color: #E2EEF6;border:none;'></ion-item>
+				<ion-item style='height:12px;padding: 0;background-color: #E2EEF6;border:none;'></ion-item>
 				<ion-item><span class='th'>理由</span><span class='th'>人数</span></ion-item>
 				<ion-item><span class='td tdf'><div style='background-color:#A3DA68;' class='radius'></div>资料有误要删除</span><span class='td'>17</span></ion-item>
 				<ion-item><span class='td tdf'><div style='background-color:#FAA314;' class='radius'></div>转学离园</span><span class='td'>5</span></ion-item>
@@ -82,10 +82,13 @@
 		</ion-content>
 		<script>
 			angular.module('app', ['ionic']).controller('app', function($scope, $timeout, $ionicLoading) {
-				loading();
-				loadChart();
-				$scope.tab = 2;
-				$scope.time = '2016.4.5-2016.8.5';
+				$scope.init = function() {
+					loading();
+					loadChart();
+					$scope.tab = 2;
+					$scope.time = '2016.4.5-2016.8.5';
+				}
+
 				$scope.change = function(time) {
 					loading();
 				}
@@ -147,6 +150,14 @@
 						color: '#548BF2'
 					}];
 					new Chart(ctx).Doughnut(data, options);
+				}
+
+				function loadData() {
+					$http.get('', {}).success(function(result) {
+
+					}).error(function(result) {
+
+					});
 				}
 			});
 		</script>

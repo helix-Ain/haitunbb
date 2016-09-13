@@ -24,9 +24,9 @@
 		</style>
 	</head>
 
-	<body ng-controller='app'>
+	<body ng-controller='app' ng-init='init()'>
 		<ion-header-bar class='bar-calm' style='background-color: #009BE8;background-image:url(../Images/d2_1.png);background-size:cover;'>
-		    <button class='button button-icon icon ion-ios-arrow-left' onclick="location='reportcenter.html'">返回</button>
+			<button class='button button-icon icon ion-ios-arrow-left' onclick="location='reportcenter.html'">返回</button>
 			<h1 class='title'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;幼儿园考勤</h1>
 		</ion-header-bar>
 		<ion-content class='has-header' style='background-color: #E2EEF6;'>
@@ -56,14 +56,15 @@
 			</ion-list>
 		</ion-content>
 		<script>
-			angular.module('app', ['ionic']).controller('app', function($scope, $timeout, $ionicLoading,$window) {
-				loading()
-				$scope.time = '2016年4月5日';
+			angular.module('app', ['ionic']).controller('app', function($scope, $timeout, $ionicLoading, $window, $http) {
+				$scope.init = function() {
+					loading();
+					loadChart();
+					$scope.time = '2016年4月5日';
+				}
+
 				$scope.change = function(time) {
 					loading();
-				}
-				$window.onload = function() {
-					loadChart();
 				}
 
 				function loadChart() {
@@ -74,7 +75,7 @@
 						color: '#4FB0EF'
 					}, {
 						value: 10,
-						label :'缺勤率',
+						label: '缺勤率',
 						color: '#DEF0F9'
 					}];
 					var options = {
@@ -104,6 +105,14 @@
 					$timeout(function() {
 						$ionicLoading.hide();
 					}, 1000);
+				}
+
+				function loadData() {
+					$http.get('', {}).success(function(result) {
+
+					}).error(function(result) {
+
+					});
 				}
 			});
 		</script>

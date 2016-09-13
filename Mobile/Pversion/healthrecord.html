@@ -9,7 +9,7 @@
 		<title></title>
 	</head>
 
-	<body ng-controller='app'>
+	<body ng-controller='app' ng-init='init()'>
 		<ion-header-bar class='bar-calm' style='background-color: #009BE8;background-image:url(../Images/d2_1.png);background-size:cover;'>
 			<button class='button button-icon icon ion-ios-arrow-left' onclick="location='healthcenter.html'">返回</button>
 			<h1 class='title'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;健康记录</h1>
@@ -17,7 +17,7 @@
 		<ion-content style='background-color: #E2EEF6;padding-bottom: 15px;'>
 			<ion-list>
 				<ion-item class='item-avatar'>
-					<img src="../Images/默认头像@2x.png"/>
+					<img src="../Images/默认头像@2x.png" />
 					<h2 style='color:#B7B7B7;font-size:15px;'>
 						姓名:&nbsp;&nbsp;<span style='display:inline-block;margin-right:20px;'>陈小婷</span>
 						性别:&nbsp;&nbsp;<span style='display: inline-block;'>女</span><br />
@@ -38,15 +38,18 @@
 				</ion-item>
 				<ion-item style='height:12px;padding: 0;background-color: #E2EEF6;border:none;'></ion-item>
 				<ion-item class='item-icon-right' style='padding:7px;cursor:pointer;' onclick='location="vaccineinoculation.html"'>
-					<img src="../Images/疫苗接种@2x.png" style='width:50px;height:50px;float:left;margin-right:10px;'/>
-						<label style='font-size:15px;'>育苗接种</label><br /><span style='font-size:13px;color:#BCBCBC;display: block;margin-top:5px;'>记录孩子的疫苗接种情况</span>
+					<img src="../Images/疫苗接种@2x.png" style='width:50px;height:50px;float:left;margin-right:10px;' />
+					<label style='font-size:15px;'>育苗接种</label><br /><span style='font-size:13px;color:#BCBCBC;display: block;margin-top:5px;'>记录孩子的疫苗接种情况</span>
 					<i class="icon ion-ios-arrow-right" style='color:#C1C1C1;font-size:25px;margin-right: -10px;'></i>
-				</ion-item>	
+				</ion-item>
 			</ion-list>
 		</ion-content>
 		<script>
-			angular.module('app', ['ionic']).controller('app', function($scope, $timeout, $ionicLoading) {
-				loading();
+			angular.module('app', ['ionic']).controller('app', function($scope, $timeout, $ionicLoading, $http) {
+				$scope.init = function() {
+					loading();
+				}
+
 				function loading() {
 					$ionicLoading.show({
 						content: 'Loading',
@@ -58,6 +61,14 @@
 					$timeout(function() {
 						$ionicLoading.hide();
 					}, 1000);
+				}
+
+				function loadData() {
+					$http.get('', {}).success(function(result) {
+
+					}).error(function(result) {
+
+					});
 				}
 
 			});

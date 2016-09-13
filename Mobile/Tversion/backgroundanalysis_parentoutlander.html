@@ -42,7 +42,7 @@
 		</style>
 	</head>
 
-	<body ng-controller='app'>
+	<body ng-controller='app' ng-init='init()'>
 		<ion-header-bar class='bar-calm' style='background-color: #009BE8;background-image:url(../Images/d2_1.png);background-size:cover;'>
 			<button class='button button-icon icon ion-ios-arrow-left' onclick="location='reportcenter.html'">返回</button>
 			<h1 class='title'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;幼儿背景分析</h1>
@@ -69,14 +69,16 @@
 				<ion-item><span class='td tdf'><div style='background-color:#A9D86E;' class='radius'></div>未填写</span><span class='td'>4</span></ion-item>
 				<ion-item><span class='td tdf'><div style='background-color:#F9A415;' class='radius'></div>不是</span><span class='td'>1</span></ion-item>
 				<ion-item><span class='td tdf'><div style='background-color:#57C749;' class='radius'></div>是</span><span class='td'>2</span></ion-item>
-			<ion-item style='height:12px;padding: 0;background-color: #E2EEF6;border:none;'></ion-item>
+				<ion-item style='height:12px;padding: 0;background-color: #E2EEF6;border:none;'></ion-item>
 			</ion-list>
 		</ion-content>
 		<script>
-			angular.module('app', ['ionic']).controller('app', function($scope, $timeout, $ionicLoading) {
-				loading();
-				loadChart();
-				$scope.tab = 1;
+			angular.module('app', ['ionic']).controller('app', function($scope, $timeout, $ionicLoading, $http) {
+				$scope.init = function() {
+					loading();
+					loadChart();
+					$scope.tab = 1;
+				}
 
 				function loading() {
 					$ionicLoading.show({
@@ -119,6 +121,14 @@
 						color: '#57C749'
 					}];
 					new Chart(ctx).Doughnut(data, options);
+				}
+
+				function loadData() {
+					$http.get('', {}).success(function(result) {
+
+					}).error(function(result) {
+
+					});
 				}
 
 			});

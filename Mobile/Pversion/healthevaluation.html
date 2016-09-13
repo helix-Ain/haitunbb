@@ -9,7 +9,7 @@
 		<title></title>
 	</head>
 
-	<body ng-controller='app'>
+	<body ng-controller='app' ng-init='init()'>
 		<ion-header-bar class='bar-calm' style='background-color: #009BE8;background-image:url(../Images/d2_1.png);background-size:cover;'>
 			<button class='button button-icon icon ion-ios-arrow-left' onclick="location='healthcenter.html'">返回</button>
 			<h1 class='title'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;健康评测</h1>
@@ -35,8 +35,10 @@
 			</ion-list>
 		</ion-content>
 		<script>
-			angular.module('app', ['ionic']).controller('app', function($scope, $timeout, $ionicLoading) {
-				loading();
+			angular.module('app', ['ionic']).controller('app', function($scope, $timeout, $ionicLoading,$http) {
+				$scope.init = function() {
+					loading();
+				}
 
 				function loading() {
 					$ionicLoading.show({
@@ -49,6 +51,14 @@
 					$timeout(function() {
 						$ionicLoading.hide();
 					}, 1000);
+				}
+
+				function loadData() {
+					$http.get('', {}).success(function(result) {
+
+					}).error(function(result) {
+
+					});
 				}
 
 			});

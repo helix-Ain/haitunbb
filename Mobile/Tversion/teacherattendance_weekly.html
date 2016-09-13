@@ -40,7 +40,7 @@
 		</style>
 	</head>
 
-	<body ng-controller='app'>
+	<body ng-controller='app' ng-init='init()'>
 		<ion-header-bar class='bar-calm' style='background-color: #009BE8;background-image:url(../Images/d2_1.png);background-size:cover;'>
 			<button class='button button-icon icon ion-ios-arrow-left' onclick="location='reportcenter.html'">返回</button>
 			<h1 class='title'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;教师考勤</h1>
@@ -69,7 +69,7 @@
 					<span>迟到<span class='num'>1</span></span>
 					<span>未审批<span class='num'>3</span></span>
 				</ion-item>
-			<ion-item style='height:12px;padding: 0;background-color: #E2EEF6;border:none;'></ion-item>
+				<ion-item style='height:12px;padding: 0;background-color: #E2EEF6;border:none;'></ion-item>
 				<ion-item><span class='th'>姓名</span><span class='th'>出勤天数</span><span class='th'>请假天数</span></ion-item>
 				<ion-item><span class='td'>李富荣</span><span class='td'>20</span><span class='td'>2</span></ion-item>
 				<ion-item><span class='td'>张鹏</span><span class='td'>22</span><span class='td'>1</span></ion-item>
@@ -79,10 +79,13 @@
 			</ion-list>
 		</ion-content>
 		<script>
-			angular.module('app', ['ionic']).controller('app', function($scope, $timeout, $ionicLoading) {
-				loading();
-				$scope.tab = 2;
-				$scope.time = '2016年4月5日';
+			angular.module('app', ['ionic']).controller('app', function($scope, $timeout, $ionicLoading, $http) {
+				$scope.init = function() {
+					loading();
+					$scope.tab = 2;
+					$scope.time = '2016年4月5日';
+				}
+
 				$scope.change = function(time) {
 					loading();
 				}
@@ -98,6 +101,14 @@
 					$timeout(function() {
 						$ionicLoading.hide();
 					}, 1000);
+				}
+				
+				function loadData(){
+					$http.get('',{}).success(function(result){
+						
+					}).error(function(result){
+						
+					});
 				}
 			});
 		</script>

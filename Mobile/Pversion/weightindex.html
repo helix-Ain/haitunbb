@@ -15,7 +15,7 @@
 		</style>
 	</head>
 
-	<body ng-controller='app'>
+	<body ng-controller='app' ng-init='init()'>
 		<ion-header-bar class='bar-calm' style='background-color: #009BE8;background-image:url(../Images/d2_1.png);background-size:cover;'>
 			<button class='button button-icon icon ion-ios-arrow-left' onclick="location='healthcenter.html'">返回</button>
 			<h1 class='title'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;健康指标</h1>
@@ -38,7 +38,7 @@
 					<canvas id="myChart" width="275" height="300"></canvas>
 				</ion-item>
 				<ion-item style='border:none;padding:0 0 10px;text-align: center;font-size: 13px;'>
-						<div style='width:15px;height:15px;border:1px solid #BEC2C4;background-color:#E4FCFF ;display: inline-block;'></div>&nbsp;<span style='position:relative;top:-2px;'>绿色区间为正常参考值</span>
+					<div style='width:15px;height:15px;border:1px solid #BEC2C4;background-color:#E4FCFF ;display: inline-block;'></div>&nbsp;<span style='position:relative;top:-2px;'>绿色区间为正常参考值</span>
 				</ion-item>
 			</ion-list>
 		</ion-content>
@@ -48,10 +48,13 @@
 			</h1>
 		</ion-footer-bar>
 		<script>
-			angular.module('app', ['ionic']).controller('app', function($scope, $timeout, $ionicLoading) {
-				loading();
-				loadChart();
-				$scope.tab = 2;
+			angular.module('app', ['ionic']).controller('app', function($scope, $timeout, $ionicLoading, $http) {
+				$scope.init = function() {
+					loading();
+					loadChart();
+					$scope.tab = 2;
+				}
+
 				$scope.change = function(time) {
 					loading();
 				}
@@ -66,7 +69,7 @@
 							pointColor: "#6ECEEE",
 							pointStrokeColor: "#fff",
 							data: [null, null, null, 13.05, 21.75, null]
-						},{
+						}, {
 							fillColor: 'rgba(200,248,254,0.5)',
 							strokeColor: null,
 							pointColor: null,
@@ -117,6 +120,14 @@
 					$timeout(function() {
 						$ionicLoading.hide();
 					}, 1000);
+				}
+
+				function loadData() {
+					$http.get('', {}).success(function(result) {
+
+					}).error(function(result) {
+
+					});
 				}
 			});
 		</script>

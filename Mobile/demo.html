@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html ng-app='app'>
+
+	<head>
+		<meta charset="UTF-8">
+		<link rel='stylesheet' href='CSS/ionic.min.css' />
+		<script src='JS/ionic.bundle.min.js'></script>
+		<title></title>
+		<style>
+			.blue{
+				color:blue;
+			}
+			.big-font{
+				font-size:50px;
+			}
+		</style>
+	</head>
+
+	<body ng-controller='app'>
+		<div>
+			<div>{{text}}</div>
+			<div ng-bind-html='html'></div>
+			<div ng-style='style'>demo</div>
+			<div ng-class='class'>demo</div>
+			<div ng-show='show'>demo</div>
+			<ul>
+				<li ng-repeat='item in data'>{{item.name}}</li>
+			</ul>
+		</div>
+		<script>
+			angular.module('app', ['ionic']).controller('app', function($scope, $window, $http, $timeout, $ionicLoading) {
+				
+				//使用{{}}双向绑定文本
+				$scope.text = 'demo';
+
+				//使用ng-bind-html绑定html到元素
+				$scope.html = '<h1>demo</h1>';
+				
+				//通过ng-show控制元素显示或隐藏
+				$scope.show = true;
+
+				//通过ng-style动态管理元素样式
+				$scope.style = {
+					color: 'red',
+					fontSize: '25px'
+				};
+				
+				//通过ng-class动态管理元素类
+				$scope.class = ['blue','big-font'];
+				
+				//通过ng-repeat动态绑定循环数据,数据改变时视图也会相应重绘
+				$scope.data = [{
+					name: 'Ain'
+				}, {
+					name: 'Von'
+				}];
+
+				//ajax请求方法
+				$http({
+					url: 'demo.json',
+					method: 'get',
+					data: {}
+				}).success(function(data, header, config, status) {
+
+				}).error(function(data, header, config, status) {
+
+				});
+
+				//四种基本网络请求方式快捷写法
+				$http.get('demo.json', {}).success(function(data, status, header, config) {}).error(function(data, status, header, config) {});
+				$http.post('demo.json', {}).success(function(data, status, header, config) {}).error(function(data, status, header, config) {});
+				$http.put('demo.json', {}).success(function(data, status, header, config) {}).error(function(data, status, header, config) {});
+				$http.delete('demo.json', {}).success(function(data, status, header, config) {}).error(function(data, status, header, config) {});
+
+				//页面及Ajax加载动画
+				$ionicLoading.show({
+					content: 'Loading',
+					animation: 'fade-in',
+					showBackdrop: true,
+					maxWidth: 200,
+					showDelay: 0
+				});
+				//关闭加载动画
+				$timeout(function() {
+					$ionicLoading.hide();
+				}, 1000);
+				
+			});
+		</script>
+	</body>
+
+</html>
